@@ -6,6 +6,8 @@
 **/[Bb]uilds/
 **/[Ll]ogs/
 **/[Uu]sersettings/
+**/[Aa]ssets/TextMesh Pro/
+
 
 # --- Asset Store Packages ---
 # Generally, you want to keep the package manifests, but ignore the actual downloaded metadata

@@ -4,6 +4,8 @@ using System.Collections;
 using System.ComponentModel;
 using UnityEngine.InputSystem;
 using System.Linq.Expressions;
+using UnityEngine.InputSystem.Controls;
+using System.Reflection;
 
 public class NPCInteractScript : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class NPCInteractScript : MonoBehaviour
     private int ind = 0;
     private Transform player;
     private bool doneWriting = true;
+    private Coroutine writingCoroutine;
 
     void Start()
     {
@@ -43,7 +46,7 @@ public class NPCInteractScript : MonoBehaviour
             Key parsedKey;
             if (System.Enum.TryParse<Key>(interactionKey.ToString(), out parsedKey))
             {
-                var keyControl = Keyboard.current[parsedKey];
+                KeyControl keyControl = Keyboard.current[parsedKey];
                 if (keyControl != null && keyControl.wasPressedThisFrame)
                     pressed = true;
             }
@@ -88,13 +91,20 @@ public class NPCInteractScript : MonoBehaviour
             if (ind <= sentences.Length - 1)
             {
                 NPCDialogue.text = "";
-                StartCoroutine(WriteSentence());
+                writingCoroutine = StartCoroutine(WriteSentence());
             }
             else
             {
                 ind = 0;
                 HideDialogue();
             }
+        }
+        else
+        {
+            StopCoroutine(writingCoroutine);
+            NPCDialogue.text = sentences[ind];
+            doneWriting = true;
+            ind++;
         }
     }
 
