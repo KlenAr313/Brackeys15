@@ -83,15 +83,18 @@ public class NPCInteractScript : MonoBehaviour
 
     void NextSentence()
     {
-        if (ind <= sentences.Length - 1 && doneWriting)
+        if (doneWriting)
         {
-            NPCDialogue.text = "";
-            StartCoroutine(WriteSentence());
-        }
-        else
-        {
-            ind = 0;
-            HideDialogue();
+            if (ind <= sentences.Length - 1)
+            {
+                NPCDialogue.text = "";
+                StartCoroutine(WriteSentence());
+            }
+            else
+            {
+                ind = 0;
+                HideDialogue();
+            }
         }
     }
 
