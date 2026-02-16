@@ -15,23 +15,21 @@ public class MovementScript : MonoBehaviour
 		canJump = true;
 	}
 
-	void Start()
+	private void Start()
 	{
 		rigidbody = gameObject.GetComponent<Rigidbody>();
 
 		canJump = true;
 	}
 
-	void FixedUpdate()
+	private void FixedUpdate()
 	{
 		Vector2 force = controller.MovementSpeed * Time.fixedDeltaTime * controller.Direction;
 		rigidbody.linearVelocity = new Vector3(force.x, rigidbody.linearVelocity.y, force.y);
 
 
 		if (controller.Jump && canJump)
-		{
 			rigidbody.linearVelocity += new Vector3(0, controller.JumpForce * Time.fixedDeltaTime, 0);
-		}
 	}
 
 	private void OnCollisionEnter(Collision collision)

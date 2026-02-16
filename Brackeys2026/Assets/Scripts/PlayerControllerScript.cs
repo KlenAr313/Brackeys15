@@ -3,24 +3,37 @@ using UnityEngine.InputSystem;
 
 public class PlayerControllerScript : EntityControllerScript
 {
-	[SerializeField] private InputAction playerMove;
-	[SerializeField] private InputAction playerJump;
+	[SerializeField] private float sensitivity;
+	[SerializeField] private InputAction mouseMove;
+	[SerializeField] private InputAction horizontalDirections;
+	[SerializeField] private InputAction verticalDirection;
+
+	private Vector2 pervMousePosition = Vector2.zero;
 
 	private void OnEnable()
 	{
-		playerMove.Enable();
-		playerJump.Enable();
+		mouseMove.Enable();
+		horizontalDirections.Enable();
+		verticalDirection.Enable();
 	}
 
 	private void OnDisable()
 	{
-		playerMove.Disable();
-		playerJump.Disable();
+		mouseMove.Disable();
+		horizontalDirections.Disable();
+		verticalDirection.Disable();
 	}
 
-	void Update()
+	private void Update()
 	{
-		direction = Vector2Rotate(playerMove.ReadValue<Vector2>(), transform.localEulerAngles.y);
-		jump = playerJump.IsPressed();
+		direction = Vector2Rotate(horizontalDirections.ReadValue<Vector2>(), -transform.localEulerAngles.y);
+		jump = verticalDirection.IsPressed();
+	}
+
+	private void FixedUpdate()
+	{
+		Vector2 mouseMovement = mouseMove.ReadValue<Vector2>();
+
+		transform.localEulerAngles += sensitivity * new Vector3(mouseMovement.y / 4, mouseMovement.x, 0);
 	}
 }
