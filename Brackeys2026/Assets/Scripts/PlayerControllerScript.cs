@@ -20,6 +20,7 @@ public class PlayerControllerScript : EntityControllerScript
 
 	void Update()
 	{
-		direction = Vector2Rotate(playerMove.ReadValue<Vector2>(), tr.localEulerAngles.y);
+		direction = Vector2Rotate(playerMove.ReadValue<Vector2>(), transform.localEulerAngles.y);
+		jump = playerJump.IsPressed();
 	}
 }

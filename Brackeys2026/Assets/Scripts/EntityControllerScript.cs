@@ -2,13 +2,17 @@ using UnityEngine;
 
 public abstract class EntityControllerScript : MonoBehaviour
 {
-	[SerializeField] protected float speed = 50;
+	[SerializeField] protected float movementSpeed = 50;
+	[SerializeField] protected float jumpForce = 50;
 
+	protected new Rigidbody rigidbody;
 	protected Vector2 direction;
-	protected Transform tr;
+	protected bool jump;
 
-	public float Speed => speed;
+	public float MovementSpeed => movementSpeed;
+	public float JumpForce => jumpForce;
 	public Vector2 Direction => direction;
+	public bool Jump => jump;
 
 	protected Vector2 Vector2Rotate(Vector2 vector, float angle)
 	{
@@ -21,9 +25,8 @@ public abstract class EntityControllerScript : MonoBehaviour
 
 	protected void Start()
 	{
-		Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-		rb.freezeRotation = true;
-
-		tr = gameObject.GetComponent<Transform>();
+		rigidbody = GetComponent<Rigidbody>();
+		rigidbody.freezeRotation = true;
+		rigidbody.useGravity = true;
 	}
 }
