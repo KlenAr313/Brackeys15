@@ -8,13 +8,6 @@ public class MovementScript : MonoBehaviour
 	private new Rigidbody rigidbody;
 	protected bool canJump;
 
-	public IEnumerator ResetJump()
-	{
-		yield return new WaitForSeconds(3);
-
-		canJump = true;
-	}
-
 	private void Start()
 	{
 		rigidbody = gameObject.GetComponent<Rigidbody>();
