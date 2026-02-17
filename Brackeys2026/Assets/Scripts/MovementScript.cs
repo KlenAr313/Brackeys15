@@ -4,6 +4,7 @@ using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
 	[SerializeField] private EntityControllerScript controller;
+	private GameObject gameManager;
 
 	private new Rigidbody rigidbody;
 	protected bool canJump;
@@ -11,6 +12,7 @@ public class MovementScript : MonoBehaviour
 	private void Start()
 	{
 		rigidbody = gameObject.GetComponent<Rigidbody>();
+		gameManager = GameObject.Find("GameManager");
 
 		canJump = true;
 	}
@@ -23,6 +25,11 @@ public class MovementScript : MonoBehaviour
 
 		if (controller.Jump && canJump)
 			rigidbody.linearVelocity += new Vector3(0, controller.JumpForce * Time.fixedDeltaTime, 0);
+
+		if (controller.Punch)
+		{
+			Punch();
+		}
 	}
 
 	private void OnCollisionEnter(Collision collision)
@@ -35,5 +42,11 @@ public class MovementScript : MonoBehaviour
 	{
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
 			canJump = false;
+	}
+
+	private void Punch()
+	{
+		controller.Punch = false;
+		GameObject.Find("Fists").GetComponent<CustomAnimator>().PlayAnimation();
 	}
 }
