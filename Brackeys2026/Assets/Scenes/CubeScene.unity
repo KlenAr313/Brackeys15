@@ -432,56 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControllerScript
   movementSpeed: 200
   jumpForce: 300
-  sensitivity: 2.5
-  mouseMove:
-    m_Name: Mouse Move
-    m_Type: 0
-    m_ExpectedControlType: Vector2
-    m_Id: ea2ad740-1224-4ee6-abd1-b949bfce238e
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: Mouse
-      m_Id: c3322b44-f7a6-4bb2-866e-3077f2af724c
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Move
-      m_Flags: 4
-    - m_Name: up
-      m_Id: 9c7692e4-0515-45b8-8cc8-6d99617c3f9d
-      m_Path: <Mouse>/delta/up
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Move
-      m_Flags: 8
-    - m_Name: down
-      m_Id: a4460118-796c-4633-8557-9843fcafe8a5
-      m_Path: <Mouse>/delta/down
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Move
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 3e95549c-a7d7-44d0-98d6-4fe2e4b0dd41
-      m_Path: <Mouse>/delta/left
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Move
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 0c86a90e-93c4-4bd5-b5a3-03dae25ce6cb
-      m_Path: <Mouse>/delta/right
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Mouse Move
-      m_Flags: 8
-    m_Flags: 0
+  sensitivity: 0.8
   horizontalDirections:
     m_Name: Horizontal Directions
     m_Type: 0
@@ -776,7 +727,7 @@ Transform:
   m_GameObject: {fileID: 2077731640}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.607, z: 0.43953}
+  m_LocalPosition: {x: 0, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
