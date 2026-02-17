@@ -1,19 +1,39 @@
+using System.Collections;
 using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
 	[SerializeField] private EntityControllerScript controller;
 
-	private Rigidbody rb;
+	private new Rigidbody rigidbody;
+	protected bool canJump;
 
-	void Start()
+	private void Start()
 	{
-		rb = gameObject.GetComponent<Rigidbody>();
+		rigidbody = gameObject.GetComponent<Rigidbody>();
+
+		canJump = true;
 	}
 
-	void FixedUpdate()
+	private void FixedUpdate()
 	{
-		Vector2 force = controller.Speed * Time.fixedDeltaTime * controller.Direction;
-		rb.linearVelocity = new Vector3(force.x, 0, force.y);
+		Vector2 force = controller.MovementSpeed * Time.fixedDeltaTime * controller.Direction;
+		rigidbody.linearVelocity = new Vector3(force.x, rigidbody.linearVelocity.y, force.y);
+
+
+		if (controller.Jump && canJump)
+			rigidbody.linearVelocity += new Vector3(0, controller.JumpForce * Time.fixedDeltaTime, 0);
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+			canJump = true;
+	}
+
+	private void OnCollisionExit(Collision collision)
+	{
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+			canJump = false;
 	}
 }
