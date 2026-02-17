@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4225265419361154334}
   - component: {fileID: 6483679361741543570}
   - component: {fileID: 3084926887559963752}
-  - component: {fileID: -3931105303632699270}
+  - component: {fileID: -5676394268313464040}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Enemy
@@ -186,7 +186,7 @@ MonoBehaviour:
   idleSpeed: 1.5
   stopDistance: 2
   detectionRange: 10
---- !u!54 &-3931105303632699270
+--- !u!54 &-5676394268313464040
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,7 +209,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
