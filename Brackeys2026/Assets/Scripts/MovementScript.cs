@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovementScript : MonoBehaviour
@@ -46,7 +47,24 @@ public class MovementScript : MonoBehaviour
 
 	private void Punch()
 	{
+		CustomAnimator[] Animations = GameObject.Find("Fists").GetComponents<CustomAnimator>();
+
+		CustomAnimator punchAnimator = null;
+		foreach (CustomAnimator anim in Animations)
+		{
+			if (anim.animationName == "punch")
+			{
+				punchAnimator = anim;
+				break;
+			}
+		}
+
+		if (punchAnimator == null || punchAnimator.IsPlaying)
+		{
+			return;
+		}
+
 		controller.Punch = false;
-		GameObject.Find("Fists").GetComponent<CustomAnimator>().PlayAnimation();
+		punchAnimator.PlayAnimation();
 	}
 }

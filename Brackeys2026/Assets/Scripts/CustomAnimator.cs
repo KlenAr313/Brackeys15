@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using NUnit.Framework;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -8,8 +9,10 @@ using UnityEngine;
 public class CustomAnimator : MonoBehaviour
 {
 
-    [SerializeField] public List<Sprite> animations;
-    [SerializeField] private String animationName; 
+    // Is converted to lowercase!
+    [SerializeField] public String animationName; 
+
+    [SerializeField] private List<Sprite> animations;
     [SerializeField] private float fps;
     [SerializeField] private bool isLooping;
 
@@ -19,11 +22,14 @@ public class CustomAnimator : MonoBehaviour
     private Sprite originalSprite;
     private bool isPlaying = false;
 
+    public bool IsPlaying { get => isPlaying; set => isPlaying = value; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         timer = 1/fps;
         parentSpriteRenderer = GetComponent<SpriteRenderer>();
+        animationName = animationName.ToLower();
     }
 
     // Update is called once per frame
@@ -33,7 +39,7 @@ public class CustomAnimator : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
-        else if (isPlaying)
+        else if (IsPlaying)
         {
             NextFrame();
         }
@@ -42,9 +48,12 @@ public class CustomAnimator : MonoBehaviour
 
     public void PlayAnimation()
     {
+        if (IsPlaying)
+        {
+            return;
+        }
         originalSprite = parentSpriteRenderer.sprite;
-        isPlaying = true;
-        Debug.Log("Playing animation: " + animationName);
+        IsPlaying = true;
         NextFrame();
     }
 
@@ -56,8 +65,7 @@ public class CustomAnimator : MonoBehaviour
         }
         else if (currentFrame >= animations.Count && !isLooping)
         {
-            Debug.Log("Ending animation: " + animationName);
-            isPlaying = false;
+            IsPlaying = false;
             currentFrame = 0;
             parentSpriteRenderer.sprite = originalSprite;
             return;
@@ -66,6 +74,5 @@ public class CustomAnimator : MonoBehaviour
         parentSpriteRenderer.sprite = animations[currentFrame];
         currentFrame++;
         timer = 1/fps;
-        Debug.Log("Frame: " + currentFrame);
     }
 }
