@@ -5,7 +5,6 @@ using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
 	[SerializeField] private EntityControllerScript controller;
-	private GameObject gameManager;
 
 	private new Rigidbody rigidbody;
 	protected bool canJump;
@@ -13,7 +12,6 @@ public class MovementScript : MonoBehaviour
 	private void Start()
 	{
 		rigidbody = gameObject.GetComponent<Rigidbody>();
-		gameManager = GameObject.Find("GameManager");
 
 		canJump = true;
 	}
