@@ -8,11 +8,13 @@ public abstract class EntityControllerScript : MonoBehaviour
 	protected new Rigidbody rigidbody;
 	protected Vector2 direction;
 	protected bool jump;
+	protected bool punch;
 
 	public float MovementSpeed => movementSpeed;
 	public float JumpForce => jumpForce;
 	public Vector2 Direction => direction;
 	public bool Jump => jump;
+	public bool Punch { get => punch; set => punch = value; }
 
 	protected Vector2 Vector2Rotate(Vector2 vector, float angle)
 	{
