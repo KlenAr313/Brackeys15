@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NpcMovement : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class NpcMovement : MonoBehaviour
     [SerializeField]
     private float stopDistance = 2f;
     [SerializeField]
+    private NavMeshAgent agent;
 
     private float detectionRange = 10f;
     private Vector3 playerDirection;
@@ -20,12 +22,13 @@ public class NpcMovement : MonoBehaviour
     private float wallTimer;
     private Vector3 wallDirection;
 
-    private float originalY;
+[SerializeField]
+    private SlotManager slotManager;
 
     void Start()
     {
         idleTimer = 0f;
-        originalY = transform.position.y;
+        slotManager = FindFirstObjectByType<SlotManager>();
     }
 
     void Update()
@@ -39,8 +42,6 @@ public class NpcMovement : MonoBehaviour
             transform.position += (playerDirection.normalized + wallDirection).normalized * speed * Time.deltaTime;
         else if (playerDirection.magnitude > detectionRange)
             Idle();
-
-        transform.position = new Vector3(transform.position.x, originalY, transform.position.z);
         
         wallTimer -= Time.deltaTime;
         if (wallTimer <= 0)
