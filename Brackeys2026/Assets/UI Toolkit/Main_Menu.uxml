@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:GroupBox style="align-self: center; top: 200px;">
+        <ui:Label text="GAME NAME" name="Label" style="top: auto; align-self: center; font-size: 60px; color: rgb(255, 0, 0);"/>
+        <ui:Button text="Start" name="StartButton" style="top: 100px; font-size: 30px;"/>
+        <ui:Button text="Options" name="OptionsButton" style="top: 200px; font-size: 30px;"/>
+        <ui:Button text="Exit" name="ExitButton" style="top: 300px; font-size: 30px;"/>
+    </ui:GroupBox>
+</ui:UXML>
