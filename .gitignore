@@ -8,7 +8,7 @@
 **/[Uu]sersettings/
 **/[Aa]ssets/TextMesh Pro/
 **/TextMesh Pro.meta/
-
+**/[Pp]rojectSettings/
 
 # --- Asset Store Packages ---
 # Generally, you want to keep the package manifests, but ignore the actual downloaded metadata
@@ -21,6 +21,7 @@
 **/.idea/
 **/*.csproj
 **/*.sln
+**/*.slnx
 
 # --- Visual Studio / IDE Specific ---
 .vs/

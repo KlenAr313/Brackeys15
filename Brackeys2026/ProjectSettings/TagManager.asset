@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Game Manager
   layers:
   - Default
   - TransparentFX
@@ -11,6 +12,10 @@ TagManager:
   - 
   - Water
   - UI
+  - 
+  - 
+  - 
+  - 
   - Ground
   - 
   - 
@@ -29,11 +34,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Fists
   - 
   - 
   - 
