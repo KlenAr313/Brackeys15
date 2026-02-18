@@ -20,7 +20,7 @@ public class TextureAutoTiling : MonoBehaviour
     }
 
     void OnValidate() => Apply();
-    void Update() => Apply();
+    void Start() => Apply();
 
     void Apply()
     {
