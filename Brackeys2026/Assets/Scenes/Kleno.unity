@@ -936,7 +936,6 @@ GameObject:
   - component: {fileID: 1169076355}
   - component: {fileID: 1169076354}
   - component: {fileID: 1169076353}
-  - component: {fileID: 1169076357}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1038,38 +1037,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1169076357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169076352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 119
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 0b8bb30aeccf3a84893611beefdc05c3, type: 2}
-  m_BuildHeightMesh: 0
 --- !u!1001 &3504837589711507486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1144,6 +1111,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebc1758f2cfea5f4b84a829e698adf6a, type: 3}
+--- !u!1001 &6920910662201181824
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2915606377210876001, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
+      propertyPath: m_Name
+      value: NavMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256273524638459602, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.33249
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256273524638459602, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256273524638459602, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.29801
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256273524638459602, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256273524638459602, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256273524638459602, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256273524638459602, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256273524638459602, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256273524638459602, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256273524638459602, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 27d804515ebd6fe4da9defcab0bd55d3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1157,3 +1181,4 @@ SceneRoots:
   - {fileID: 1113931703}
   - {fileID: 187702139}
   - {fileID: 1169076356}
+  - {fileID: 6920910662201181824}
