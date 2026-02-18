@@ -1,4 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/Styles/NPC_Dialogue_Style.uss?fileID=7433441132597879392&amp;guid=233e879facb010842852e1fe50c1447b&amp;type=3#NPC_Dialogue_Style"/>
-    <ui:VisualElement name="DialogueRoot" style="flex-grow: 1; align-self: center; top: 800px; flex-direction: row; height: 200px; width: 900px; align-items: flex-end; justify-content: flex-start; align-content: flex-start; display: flex; font-size: 30px;"/>
-</ui:UXML>
