@@ -8,7 +8,8 @@
 **/[Uu]sersettings/
 **/[Aa]ssets/TextMesh Pro/
 **/TextMesh Pro.meta/
-
+**/[Pp]rojectSettings/
+**/UIElementsSchema/
 
 # --- Asset Store Packages ---
 # Generally, you want to keep the package manifests, but ignore the actual downloaded metadata
@@ -21,6 +22,7 @@
 **/.idea/
 **/*.csproj
 **/*.sln
+**/*.slnx
 
 # --- Visual Studio / IDE Specific ---
 .vs/
@@ -64,4 +66,3 @@ sysinfo.txt
 # --- URP/HDRP Specific (If using) ---
 **/[Aa]ssets/Samples/High Definition RP*
 **/[Aa]ssets/Samples/Universal RP*
-Brackeys2026/Assets/TextMesh Pro.meta

@@ -68,6 +68,7 @@ public class PauseScript : MonoBehaviour
     void TogglePause()
     {
         paused = !paused;
+        PlayerControllerScript playerControllerScript = GameObject.Find("Player").GetComponent<PlayerControllerScript>();
 
         if (paused)
         {
@@ -75,6 +76,8 @@ public class PauseScript : MonoBehaviour
             pauseRoot.AddToClassList("visible");
 
             Time.timeScale = 0f;
+            playerControllerScript.Sensitivity = 0f;
+            playerControllerScript.Punch = false;
         }
         else
         {
@@ -82,6 +85,8 @@ public class PauseScript : MonoBehaviour
             pauseRoot.AddToClassList("hidden");
 
             Time.timeScale = 1f;
+            playerControllerScript.Sensitivity = playerControllerScript.OriginalSensitivity;
+            playerControllerScript.Punch = false;
         }
     }
 
