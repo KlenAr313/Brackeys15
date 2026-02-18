@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Game Manager
+  - Enemy
+  - Wall
+  - EnemySlot
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - Character
   - 
   - 
   - 
