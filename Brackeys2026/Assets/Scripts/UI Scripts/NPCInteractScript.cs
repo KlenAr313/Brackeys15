@@ -1,40 +1,46 @@
 using UnityEngine;
-using TMPro;
 using System.Collections;
 using System.ComponentModel;
 using UnityEngine.InputSystem;
 using System.Linq.Expressions;
 using UnityEngine.InputSystem.Controls;
-using System.Reflection;
+using UnityEngine.UIElements;
+
 
 public class NPCInteractScript : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI NPCDialogue;
-    [SerializeField] private Canvas dialogueCanvas;
+    [SerializeField] private UIDocument document;
     [SerializeField] private float dialogueSpeed;
     [SerializeField] private string[] sentences;
     [SerializeField] private float interactionRange = 2f;
     [SerializeField] private KeyCode interactionKey = KeyCode.E;
-    
+    [SerializeField] private float frequency = 0.2f;
+    [SerializeField] private float wob = 8f;
+    private VisualElement dialogueRoot;
+    private bool skipRequested = false;
     private bool playerInRange = false;
     private bool dialogueActive = false;
     private int ind = 0;
     private Transform player;
     private bool doneWriting = true;
     private Coroutine writingCoroutine;
+    
 
     void Start()
     {
         // MAKE PLAYER BEFORE
         player = GameObject.FindGameObjectWithTag("Player").transform;
         
-        if (dialogueCanvas != null)
-            dialogueCanvas.enabled = false;
+        if (document != null)
+        {
+            document.enabled = true;
+            dialogueRoot = document.rootVisualElement.Q<VisualElement>("DialogueRoot");
+        }
     }
 
     void Update()
     {
-        if (player == null) return;
+        if (player == null || dialogueRoot == null) return;
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         playerInRange = distanceToPlayer <= interactionRange;
@@ -52,10 +58,15 @@ public class NPCInteractScript : MonoBehaviour
             }
         }
 
+        // DEBUG (SANTER) CLAUSE UNTIL NPCS ARE IMPLEMENTED NORMALLY
+        playerInRange = true;
 
         if (playerInRange && pressed)
         {
-            ShowDialogue();
+            if (dialogueActive != true)
+            {
+                ShowDialogue();
+            }
             NextSentence();
         }
         else if (!playerInRange && dialogueActive == true)
@@ -64,24 +75,19 @@ public class NPCInteractScript : MonoBehaviour
         }
     }
 
-    private void ShowDialogue()
+    void ShowDialogue()
     {
         dialogueActive = true;
-        if (dialogueCanvas != null)
-        {
-            dialogueCanvas.enabled = true;
-            
-        }
+        if (dialogueRoot != null)
+            dialogueRoot.style.display = DisplayStyle.Flex;
     }
 
-    private void HideDialogue()
+    void HideDialogue()
     {
         dialogueActive = false;
-        if (dialogueCanvas != null)
-            dialogueCanvas.enabled = false;
         
-        if (NPCDialogue != null)
-            NPCDialogue.text = "";
+        if (dialogueRoot != null)
+            dialogueRoot.style.display = DisplayStyle.None;
     }
 
     void NextSentence()
@@ -90,7 +96,7 @@ public class NPCInteractScript : MonoBehaviour
         {
             if (ind <= sentences.Length - 1)
             {
-                NPCDialogue.text = "";
+                dialogueRoot.Clear();
                 writingCoroutine = StartCoroutine(WriteSentence());
             }
             else
@@ -101,22 +107,53 @@ public class NPCInteractScript : MonoBehaviour
         }
         else
         {
-            StopCoroutine(writingCoroutine);
-            NPCDialogue.text = sentences[ind];
-            doneWriting = true;
-            ind++;
+            skipRequested = true;
         }
     }
 
     IEnumerator WriteSentence()
     {
         doneWriting = false;
-        foreach(char character in sentences[ind].ToCharArray())
+        skipRequested = false;
+        string sentence = sentences[ind];
+
+        for(int i = 0; i < sentence.Length; i++)
         {
-            NPCDialogue.text += character;
-            yield return new WaitForSeconds(dialogueSpeed);
+            AddLetter(sentence[i], i);
+            
+            if (!skipRequested)
+                yield return new WaitForSeconds(dialogueSpeed);
+            else
+                continue;
         }
+
         doneWriting = true;
         ind++;
+    }
+
+    void AddLetter(char c, int index)
+    {
+        Label letter = new Label(c.ToString());
+        letter.AddToClassList("Dialogue");
+
+        letter.style.marginRight = 1;
+
+        dialogueRoot.Add(letter);
+        StartCoroutine(Wobble(letter, index));
+    }
+
+    IEnumerator Wobble(Label letter, int offset)
+    {
+        float t = offset * frequency;
+
+        while (letter != null)
+        {
+            t += Time.deltaTime;
+
+            float y = Mathf.Sin(t * 6f) * wob;
+            letter.style.translate = new Translate(0, y, 0);
+
+            yield return null;
+        }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerControllerScript : EntityControllerScript
 {
 	[SerializeField] private float sensitivity;
+	private float originalSensitivity;
 	[SerializeField] private InputAction horizontalDirections;
 	[SerializeField] private InputAction verticalDirection;
 	[SerializeField] private InputAction horizontalSpeed;
@@ -13,7 +14,16 @@ public class PlayerControllerScript : EntityControllerScript
 	private float xRotation;
 	private float yRotation;
 
-	private void OnEnable()
+    public float Sensitivity { get => sensitivity; set => sensitivity = value; }
+    public float OriginalSensitivity { get => originalSensitivity; set => originalSensitivity = value; }
+
+#pragma warning disable CS0108
+    private void Start()
+    {
+		OriginalSensitivity = sensitivity;
+	}
+#pragma warning restore CS0108 
+    private void OnEnable()
 	{
 		horizontalDirections.Enable();
 		verticalDirection.Enable();
@@ -34,8 +44,8 @@ public class PlayerControllerScript : EntityControllerScript
 
 		Vector2 mouseMovement = Mouse.current.delta.ReadValue();
 
-		yRotation += mouseMovement.x * sensitivity;
-		xRotation -= mouseMovement.y * sensitivity;
+		yRotation += mouseMovement.x * Sensitivity;
+		xRotation -= mouseMovement.y * Sensitivity;
 
 		xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
