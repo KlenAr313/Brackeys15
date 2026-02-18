@@ -1,3 +1,4 @@
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,18 +12,21 @@ public class PlayerControllerScript : EntityControllerScript
 
 	[SerializeField] private InputAction punchAction;
 
+	private Transform cameraParentTransform;
+
 	private float xRotation;
 	private float yRotation;
 
     public float Sensitivity { get => sensitivity; set => sensitivity = value; }
     public float OriginalSensitivity { get => originalSensitivity; set => originalSensitivity = value; }
 
-#pragma warning disable CS0108
-    private void Start()
+    private new void Start()
     {
+		base.Start();
 		OriginalSensitivity = sensitivity;
+		cameraParentTransform = GameObject.Find("Camera").transform;
 	}
-#pragma warning restore CS0108 
+
     private void OnEnable()
 	{
 		horizontalDirections.Enable();
@@ -39,7 +43,7 @@ public class PlayerControllerScript : EntityControllerScript
 
 	private void Update()
 	{
-		direction = Vector2Rotate(horizontalDirections.ReadValue<Vector2>(), -transform.localEulerAngles.y);
+		direction = Vector2Rotate(horizontalDirections.ReadValue<Vector2>(), -cameraParentTransform.localEulerAngles.y);
 		jump = verticalDirection.IsPressed();
 
 		Vector2 mouseMovement = Mouse.current.delta.ReadValue();
@@ -49,7 +53,7 @@ public class PlayerControllerScript : EntityControllerScript
 
 		xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-		transform.localEulerAngles = new Vector3(xRotation, yRotation, 0f);
+		cameraParentTransform.localEulerAngles = new Vector3(xRotation, yRotation, 0f);
 
 		if(punchAction.triggered)
 		{

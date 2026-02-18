@@ -102,7 +102,6 @@ GameObject:
   - component: {fileID: 2997226128731353290}
   - component: {fileID: 4225265419361154334}
   - component: {fileID: 6483679361741543570}
-  - component: {fileID: -5676394268313464040}
   - component: {fileID: -334899070142269749}
   - component: {fileID: 7464960926965753554}
   m_Layer: 7
@@ -151,7 +150,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -170,33 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 0}
---- !u!54 &-5676394268313464040
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3773247448988033611}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!195 &-334899070142269749
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -234,3 +206,4 @@ MonoBehaviour:
   player: {fileID: 0}
   agent: {fileID: -334899070142269749}
   detectionRange: 30
+  UpdateInterval: 0.5

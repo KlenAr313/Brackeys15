@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 public class NpcMovementNav : MonoBehaviour
@@ -9,6 +10,9 @@ public class NpcMovementNav : MonoBehaviour
     [SerializeField]
     private float detectionRange = 10f;
 
+    private float timer = 0;
+    [SerializeField]private float UpdateInterval = 0.5f;
+
     private SlotManager slotManager;
     private bool triggered = false;
 
@@ -17,11 +21,21 @@ public class NpcMovementNav : MonoBehaviour
     void Start()
     {
         slotManager = FindFirstObjectByType<SlotManager>();
+        player = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if(timer < UpdateInterval)
+        {
+            timer += Time.deltaTime;
+            return;
+        }
+
+        timer = 0;
+
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer < detectionRange && !triggered)
         {
