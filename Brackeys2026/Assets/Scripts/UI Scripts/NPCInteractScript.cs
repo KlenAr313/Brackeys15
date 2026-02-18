@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 using System.Collections;
 using System.ComponentModel;
 using UnityEngine.InputSystem;
@@ -15,6 +14,8 @@ public class NPCInteractScript : MonoBehaviour
     [SerializeField] private string[] sentences;
     [SerializeField] private float interactionRange = 2f;
     [SerializeField] private KeyCode interactionKey = KeyCode.E;
+    [SerializeField] private float frequency = 0.2f;
+    [SerializeField] private float wob = 8f;
     private VisualElement dialogueRoot;
     private bool skipRequested = false;
     private bool playerInRange = false;
@@ -57,6 +58,7 @@ public class NPCInteractScript : MonoBehaviour
             }
         }
 
+        // DEBUG (SANTER) CLAUSE UNTIL NPCS ARE IMPLEMENTED NORMALLY
         playerInRange = true;
 
         if (playerInRange && pressed)
@@ -142,13 +144,13 @@ public class NPCInteractScript : MonoBehaviour
 
     IEnumerator Wobble(Label letter, int offset)
     {
-        float t = offset * 0.12f;
+        float t = offset * frequency;
 
         while (letter != null)
         {
             t += Time.deltaTime;
 
-            float y = Mathf.Sin(t * 6f) * 4f;
+            float y = Mathf.Sin(t * 6f) * wob;
             letter.style.translate = new Translate(0, y, 0);
 
             yield return null;

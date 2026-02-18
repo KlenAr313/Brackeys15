@@ -15,5 +15,5 @@
 .Dialogue {
     font-size: 50px;
     color: rgb(255, 255, 255);
-    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/KiwiSoda.ttf?fileID=12800000&guid=1735b91adc8eecb46942c124ab30e908&type=3#KiwiSoda");
+    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/Fonts/KiwiSoda.ttf?fileID=12800000&guid=1735b91adc8eecb46942c124ab30e908&type=3#KiwiSoda");
 }
