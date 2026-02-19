@@ -64,5 +64,10 @@ public class MovementScript : MonoBehaviour
 
 		controller.Punch = false;
 		punchAnimator.PlayAnimation();
+
+		if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 100f))
+        {
+            Debug.Log("Hit: " + hit.collider.name);
+        }
 	}
 }
