@@ -14,9 +14,14 @@ public class NpcMovementNav : MonoBehaviour
     [SerializeField]private float UpdateInterval = 0.5f;
 
     private SlotManager slotManager;
-    private bool triggered = false;
+    private bool triggered = true;
 
     public GameObject currentSlot;
+
+    public void Trigger()
+    {
+        triggered = true;
+    }
 
     void Start()
     {
@@ -37,13 +42,13 @@ public class NpcMovementNav : MonoBehaviour
         timer = 0;
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer < detectionRange && !triggered)
+        if (distanceToPlayer < detectionRange && currentSlot == null && triggered && seesPlayer())
         {
+
             currentSlot = slotManager.GetAvailabeClosestSlot(transform.position);
             if (currentSlot != null)
             {
                 agent.SetDestination(currentSlot.transform.position);
-                triggered = true;
             }
         }
         else if (distanceToPlayer >= detectionRange && triggered)
@@ -58,5 +63,17 @@ public class NpcMovementNav : MonoBehaviour
         {
             agent.SetDestination(currentSlot.transform.position);
         }
+    }
+
+    bool seesPlayer()
+    {
+        Vector3 directionToPlayer = player.position - transform.position;
+        Ray ray = new Ray(transform.position, directionToPlayer);
+
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit, detectionRange, LayerMask.GetMask("Default"), QueryTriggerInteraction.Ignore))
+            return false;
+
+        return true;
     }
 }

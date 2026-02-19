@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 869985556399415321}
   - component: {fileID: 676895947670269788}
   - component: {fileID: 3763607427925168949}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: -334899070142269749}
   - component: {fileID: 7464960926965753554}
   - component: {fileID: 2212252599933991038}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: NPC
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -208,6 +208,7 @@ MonoBehaviour:
   agent: {fileID: -334899070142269749}
   detectionRange: 30
   UpdateInterval: 0.5
+  currentSlot: {fileID: 0}
 --- !u!114 &2212252599933991038
 MonoBehaviour:
   m_ObjectHideFlags: 0
