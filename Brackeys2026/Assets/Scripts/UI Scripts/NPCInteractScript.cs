@@ -11,12 +11,14 @@ public class NPCInteractScript : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
     [SerializeField] private float dialogueSpeed;
+    [SerializeField] private string characterName;
     [SerializeField] private string[] sentences;
     [SerializeField] private float interactionRange = 2f;
     [SerializeField] private KeyCode interactionKey = KeyCode.E;
     [SerializeField] private float frequency = 0.2f;
     [SerializeField] private float wob = 8f;
     private VisualElement dialogueRoot;
+    private Label nameLabel;
     private bool skipRequested = false;
     private bool playerInRange = false;
     private bool dialogueActive = false;
@@ -35,6 +37,9 @@ public class NPCInteractScript : MonoBehaviour
         {
             document.enabled = true;
             dialogueRoot = document.rootVisualElement.Q<VisualElement>("DialogueRoot");
+            nameLabel = document.rootVisualElement.Q<Label>("NameLabel");
+            nameLabel.style.display = DisplayStyle.None;
+            nameLabel.text = characterName;
         }
     }
 
@@ -77,17 +82,20 @@ public class NPCInteractScript : MonoBehaviour
 
     void ShowDialogue()
     {
+        UnityEngine.Debug.Log("wow");
         dialogueActive = true;
-        if (dialogueRoot != null)
+        if (dialogueRoot != null || nameLabel != null)
             dialogueRoot.style.display = DisplayStyle.Flex;
+            nameLabel.style.display = DisplayStyle.Flex;
     }
 
     void HideDialogue()
     {
         dialogueActive = false;
         
-        if (dialogueRoot != null)
+        if (dialogueRoot != null || nameLabel != null)
             dialogueRoot.style.display = DisplayStyle.None;
+            nameLabel.style.display = DisplayStyle.None;
     }
 
     void NextSentence()

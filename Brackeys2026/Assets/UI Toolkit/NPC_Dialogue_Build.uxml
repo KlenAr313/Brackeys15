@@ -1,4 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/Styles/NPC_Dialogue_Style.uss?fileID=7433441132597879392&amp;guid=233e879facb010842852e1fe50c1447b&amp;type=3#NPC_Dialogue_Style"/>
     <ui:VisualElement name="DialogueRoot" style="flex-grow: 1; align-self: center; top: 800px; flex-direction: row; height: 200px; width: 900px; align-items: flex-end; justify-content: flex-start; align-content: flex-start; display: flex; font-size: 30px;"/>
+    <ui:Label text="Name" name="NameLabel" style="position: absolute; top: 750px; left: 415px; height: 102px; width: 226px; align-items: auto; justify-content: flex-start; -unity-text-align: middle-center; font-size: 50px; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/KiwiSoda.ttf?fileID=12800000&amp;guid=1735b91adc8eecb46942c124ab30e908&amp;type=3#KiwiSoda&quot;); display: none; visibility: visible;"/>
 </ui:UXML>
