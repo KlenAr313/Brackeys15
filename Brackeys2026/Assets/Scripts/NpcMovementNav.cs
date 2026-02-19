@@ -16,7 +16,7 @@ public class NpcMovementNav : MonoBehaviour
     private SlotManager slotManager;
     private bool triggered = false;
 
-    private GameObject currentSlot;
+    public GameObject currentSlot;
 
     void Start()
     {

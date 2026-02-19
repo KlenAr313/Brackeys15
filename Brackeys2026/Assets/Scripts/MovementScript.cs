@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
 	[SerializeField] private EntityControllerScript controller;
+	[SerializeField] private int damage = 10;
 
 	private new Rigidbody rigidbody;
 	protected bool canJump;
@@ -68,10 +69,11 @@ public class MovementScript : MonoBehaviour
 
 		if (Physics.Raycast(centerOfMass.transform.position, centerOfMass.transform.forward, out RaycastHit hit, 100f))
         {
-            //Debug.Log("Hit: " + hit.collider.name);
-			if(hit.collider.name == "Enemy")
+			if(hit.collider.tag.ToLower() == "enemy")
 			{
-				Debug.Log("Enemy hit!");
+				EnemyBase enemy = hit.collider.GetComponent<EnemyBase>();
+
+				enemy.TakeDamage(damage);
 			}
         }
 	}

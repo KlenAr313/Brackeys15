@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 6483679361741543570}
   - component: {fileID: -334899070142269749}
   - component: {fileID: 7464960926965753554}
+  - component: {fileID: 2212252599933991038}
   m_Layer: 7
   m_Name: NPC
   m_TagString: Enemy
@@ -207,3 +208,17 @@ MonoBehaviour:
   agent: {fileID: -334899070142269749}
   detectionRange: 30
   UpdateInterval: 0.5
+--- !u!114 &2212252599933991038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3773247448988033611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a1e0939617bf04a9a73ebab00f15d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBase
+  health: 100
+  damage: 10
