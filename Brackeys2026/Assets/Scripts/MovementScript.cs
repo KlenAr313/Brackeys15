@@ -1,15 +1,19 @@
-using System.Collections;
-using Unity.VisualScripting;
+using System.Data.SqlTypes;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
 	[SerializeField] private EntityControllerScript controller;
 	[SerializeField] private int damage = 10;
+	private GameObject centerOfMass;
+	[SerializeField] private float speedMody;
 
 	private new Rigidbody rigidbody;
 	protected bool canJump;
-	private GameObject centerOfMass;
+	private Vector2 force;
+
+	private bool inWater;
 
 	private void Start()
 	{
@@ -17,11 +21,17 @@ public class MovementScript : MonoBehaviour
 		centerOfMass = GameObject.Find("Camera");
 
 		canJump = true;
+		inWater = false;
 	}
 
 	private void FixedUpdate()
 	{
-		Vector2 force = controller.MovementSpeed * Time.fixedDeltaTime * controller.Direction;
+		
+		force = controller.MovementSpeed * Time.fixedDeltaTime * controller.Direction;
+		if (inWater)
+		{
+			force *= speedMody;
+		}
 		rigidbody.linearVelocity = new Vector3(force.x, rigidbody.linearVelocity.y, force.y);
 
 		if (controller.Jump && canJump)
@@ -37,12 +47,22 @@ public class MovementScript : MonoBehaviour
 	{
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
 			canJump = true;
+		
+		if (collision.gameObject.tag == "Water")
+		{
+			inWater = true;
+		}
 	}
 
 	private void OnCollisionExit(Collision collision)
 	{
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
 			canJump = false;
+
+		if (collision.gameObject.tag == "Water")
+		{
+			inWater = false;
+		}
 	}
 
 	private void Punch()
