@@ -1,25 +1,40 @@
-using System.Collections;
-using Unity.VisualScripting;
+using System.Data.SqlTypes;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
 	[SerializeField] private EntityControllerScript controller;
+	[SerializeField] private float speedMody;
+
+	private GameObject gameManager;
 
 	private new Rigidbody rigidbody;
 	protected bool canJump;
+	private Vector2 force;
+
+	private bool inWater;
+
 
 	private void Start()
 	{
 		rigidbody = gameObject.GetComponent<Rigidbody>();
 
 		canJump = true;
+		inWater = false;
 	}
 
 	private void FixedUpdate()
 	{
-		Vector2 force = controller.MovementSpeed * Time.fixedDeltaTime * controller.Direction;
+		
+		force = controller.MovementSpeed * Time.fixedDeltaTime * controller.Direction;
+		if (inWater)
+		{
+			force = force * 0.4f;
+		}
 		rigidbody.linearVelocity = new Vector3(force.x, rigidbody.linearVelocity.y, force.y);
+
+		
 
 
 		if (controller.Jump && canJump)
@@ -35,12 +50,22 @@ public class MovementScript : MonoBehaviour
 	{
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
 			canJump = true;
+		
+		if (collision.gameObject.tag == "Water")
+		{
+			inWater = true;
+		}
 	}
 
 	private void OnCollisionExit(Collision collision)
 	{
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
 			canJump = false;
+
+		if (collision.gameObject.tag == "Water")
+		{
+			inWater = false;
+		}
 	}
 
 	private void Punch()

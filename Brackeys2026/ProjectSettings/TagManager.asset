@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Wall
   - EnemySlot
+  - Water
   layers:
   - Default
   - TransparentFX

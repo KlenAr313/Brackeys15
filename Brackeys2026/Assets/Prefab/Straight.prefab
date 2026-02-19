@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8231456455534076217}
   - component: {fileID: 2479099188929233030}
   - component: {fileID: 5019389526275450891}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pawement (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6111946492573170525}
   - component: {fileID: 7561138487075454872}
   - component: {fileID: 7518734807031114108}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pawement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,9 +236,9 @@ GameObject:
   - component: {fileID: 7861470608798671566}
   - component: {fileID: 7176902779420802274}
   - component: {fileID: 3726161372256891052}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

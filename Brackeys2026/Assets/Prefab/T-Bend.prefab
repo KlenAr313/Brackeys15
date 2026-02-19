@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 297191303855436854}
   - component: {fileID: 5948339470565503702}
   - component: {fileID: 6933244308342316546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pawement (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 7015631783589857273}
   - component: {fileID: 9108135526052265191}
   - component: {fileID: 113540491847471165}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pawement (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,9 +572,9 @@ GameObject:
   - component: {fileID: 116858042715242297}
   - component: {fileID: 1774325485561172798}
   - component: {fileID: 2477569835184517729}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Water (1)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 4978383562104984618}
   - component: {fileID: 2001279317328712763}
   - component: {fileID: 7383923139226678808}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pawement (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1057,7 @@ GameObject:
   - component: {fileID: 1212714897089187830}
   - component: {fileID: 2534112815380908395}
   - component: {fileID: 6233740829743836056}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pawement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1169,7 +1169,7 @@ GameObject:
   - component: {fileID: 5814337928980594573}
   - component: {fileID: 8780585707206138183}
   - component: {fileID: 643420515896491659}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pawement (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1319,9 +1319,9 @@ GameObject:
   - component: {fileID: 8067698550415955105}
   - component: {fileID: 4263359608181013916}
   - component: {fileID: 7854309015101358706}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

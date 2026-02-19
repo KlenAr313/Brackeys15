@@ -10,7 +10,7 @@ public abstract class EntityControllerScript : MonoBehaviour
 	protected bool jump;
 	protected bool punch;
 
-	public float MovementSpeed => movementSpeed;
+	public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
 	public float JumpForce => jumpForce;
 	public Vector2 Direction => direction;
 	public bool Jump => jump;
