@@ -5,7 +5,6 @@ using System.Collections;
 
 public class CameraEffect : MonoBehaviour
 {
-    [SerializeField]
     private Volume volume;
     private ColorAdjustments colorAdjustments;
     private LensDistortion lensDistortion;
@@ -26,7 +25,7 @@ public class CameraEffect : MonoBehaviour
     private float swayAmount = 6.0f;
 
     void Start() {
-        volume = FindObjectOfType<Volume>();
+        volume = FindFirstObjectByType<Volume>();
         volume.profile.TryGet(out colorAdjustments);
         volume.profile.TryGet(out lensDistortion);
     }
