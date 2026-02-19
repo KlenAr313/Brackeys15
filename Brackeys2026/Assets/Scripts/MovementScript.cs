@@ -5,9 +5,9 @@ using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
 	[SerializeField] private EntityControllerScript controller;
+	[SerializeField] private int damage = 10;
+	private GameObject centerOfMass;
 	[SerializeField] private float speedMody;
-
-	private GameObject gameManager;
 
 	private new Rigidbody rigidbody;
 	protected bool canJump;
@@ -15,10 +15,10 @@ public class MovementScript : MonoBehaviour
 
 	private bool inWater;
 
-
 	private void Start()
 	{
 		rigidbody = gameObject.GetComponent<Rigidbody>();
+		centerOfMass = GameObject.Find("Camera");
 
 		canJump = true;
 		inWater = false;
@@ -33,9 +33,6 @@ public class MovementScript : MonoBehaviour
 			force *= speedMody;
 		}
 		rigidbody.linearVelocity = new Vector3(force.x, rigidbody.linearVelocity.y, force.y);
-
-		
-
 
 		if (controller.Jump && canJump)
 			rigidbody.linearVelocity += new Vector3(0, controller.JumpForce * Time.fixedDeltaTime, 0);
@@ -89,5 +86,15 @@ public class MovementScript : MonoBehaviour
 
 		controller.Punch = false;
 		punchAnimator.PlayAnimation();
+
+		if (Physics.Raycast(centerOfMass.transform.position, centerOfMass.transform.forward, out RaycastHit hit, 100f))
+        {
+			if(hit.collider.tag.ToLower() == "enemy")
+			{
+				EnemyBase enemy = hit.collider.GetComponent<EnemyBase>();
+
+				enemy.TakeDamage(damage);
+			}
+        }
 	}
 }

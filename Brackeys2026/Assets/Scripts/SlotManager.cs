@@ -8,9 +8,24 @@ public class SlotManager : MonoBehaviour
     [SerializeField]
     private float spaceToPlayer = 2f;
 
+    private static SlotManager instance;
+
     private Dictionary<GameObject, bool> slotStatus;
+
+    public static SlotManager Instance { get => instance; set => instance = value; }
+
     void Start()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            return;
+        }
+
+
         slotStatus = new Dictionary<GameObject, bool>();
         for (int i = 0; i < numberOfSlots; i++)
         {
