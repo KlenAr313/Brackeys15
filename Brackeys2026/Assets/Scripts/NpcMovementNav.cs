@@ -15,6 +15,7 @@ public class NpcMovementNav : MonoBehaviour
 
     private SlotManager slotManager;
     private bool triggered = false;
+    private EnemyBase enemyBase;
 
     public GameObject currentSlot;
 
@@ -22,6 +23,7 @@ public class NpcMovementNav : MonoBehaviour
     {
         slotManager = FindFirstObjectByType<SlotManager>();
         player = GameObject.Find("Player").transform;
+        enemyBase = GetComponent<EnemyBase>();
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class NpcMovementNav : MonoBehaviour
             {
                 agent.SetDestination(currentSlot.transform.position);
                 triggered = true;
+                enemyBase.InCombat = true;
             }
         }
         else if (distanceToPlayer >= detectionRange && triggered)
@@ -52,11 +55,13 @@ public class NpcMovementNav : MonoBehaviour
             slotManager.ResetSlot(currentSlot);
             currentSlot = null;
             triggered = false;
+            enemyBase.InCombat = false;
         }
 
         if (triggered && currentSlot != null)
         {
             agent.SetDestination(currentSlot.transform.position);
+            enemyBase.InCombat = true;
         }
     }
 }
