@@ -8,10 +8,12 @@ public class MovementScript : MonoBehaviour
 
 	private new Rigidbody rigidbody;
 	protected bool canJump;
+	private GameObject centerOfMass;
 
 	private void Start()
 	{
 		rigidbody = gameObject.GetComponent<Rigidbody>();
+		centerOfMass = GameObject.Find("Camera");
 
 		canJump = true;
 	}
@@ -20,7 +22,6 @@ public class MovementScript : MonoBehaviour
 	{
 		Vector2 force = controller.MovementSpeed * Time.fixedDeltaTime * controller.Direction;
 		rigidbody.linearVelocity = new Vector3(force.x, rigidbody.linearVelocity.y, force.y);
-
 
 		if (controller.Jump && canJump)
 			rigidbody.linearVelocity += new Vector3(0, controller.JumpForce * Time.fixedDeltaTime, 0);
@@ -65,9 +66,13 @@ public class MovementScript : MonoBehaviour
 		controller.Punch = false;
 		punchAnimator.PlayAnimation();
 
-		if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 100f))
+		if (Physics.Raycast(centerOfMass.transform.position, centerOfMass.transform.forward, out RaycastHit hit, 100f))
         {
-            Debug.Log("Hit: " + hit.collider.name);
+            //Debug.Log("Hit: " + hit.collider.name);
+			if(hit.collider.name == "Enemy")
+			{
+				Debug.Log("Enemy hit!");
+			}
         }
 	}
 }
