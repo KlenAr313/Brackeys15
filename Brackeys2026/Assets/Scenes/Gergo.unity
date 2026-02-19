@@ -1107,7 +1107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementScript
   controller: {fileID: 999708310}
-  speedMody: 0.4
 --- !u!114 &999708310
 MonoBehaviour:
   m_ObjectHideFlags: 0
