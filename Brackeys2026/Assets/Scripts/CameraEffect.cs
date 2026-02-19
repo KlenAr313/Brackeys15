@@ -13,7 +13,7 @@ public class CameraEffect : MonoBehaviour
     private float duration = 3.0f;
 
     [SerializeField]
-    private float speed = 5.0f;
+    private float distiortionSpeed = 5.0f;
     [SerializeField]
     private float maxDistortion = 0.7f;
     [SerializeField]
@@ -45,7 +45,7 @@ public class CameraEffect : MonoBehaviour
             float shift = Mathf.PingPong(Time.time * 500, 360) - 180;
             colorAdjustments.hueShift.value = shift;
 
-            float wave = Mathf.Sin(Time.time * speed);
+            float wave = Mathf.Sin(Time.time * distiortionSpeed);
             lensDistortion.intensity.value = wave * maxDistortion;
             lensDistortion.scale.value = 1.0f + (wave * scalePulse);
 
