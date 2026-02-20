@@ -8,11 +8,16 @@
 }
 
 .hidden {
-    translate: 0 -1500px;
+    translate: 0 0;
+    opacity: 0;
+    display: flex;
 }
 
 .visible {
     translate: 0 0;
+    transition-property: opacity;
+    transition-duration: 1.25s;
+    transition-timing-function: ease-out;
 }
 
 Button {

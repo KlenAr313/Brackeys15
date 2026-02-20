@@ -8,8 +8,8 @@
             <ui:Button text="Exit" name="ExitButton" style="top: 300px; font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/KiwiSoda.ttf?fileID=12800000&amp;guid=1735b91adc8eecb46942c124ab30e908&amp;type=3#KiwiSoda&quot;);"/>
         </ui:GroupBox>
         <ui:GroupBox name="OptionsRoot" class="hidden" style="align-self: center; top: auto; position: relative; transition-property: translate; transition-duration: 0.5s;">
-            <ui:Slider label="SFX" value="60" high-value="100" name="SFXSlider" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/KiwiSoda.ttf?fileID=12800000&amp;guid=1735b91adc8eecb46942c124ab30e908&amp;type=3#KiwiSoda&quot;); top: 90px;"/>
-            <ui:Slider label="MUSIC" value="42" high-value="100" name="MusicSlider" style="-unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/KiwiSoda.ttf?fileID=12800000&amp;guid=1735b91adc8eecb46942c124ab30e908&amp;type=3#KiwiSoda&quot;); font-size: 40px; top: 195px; width: 341px;"/>
+            <ui:Slider label="MUSIC" value="0.6" high-value="1" name="MusicSlider" low-value="0.001" style="font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/KiwiSoda.ttf?fileID=12800000&amp;guid=1735b91adc8eecb46942c124ab30e908&amp;type=3#KiwiSoda&quot;); top: 90px;"/>
+            <ui:Slider label="SFX" value="0.6" high-value="1" name="SFXSlider" low-value="0.001" style="-unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/KiwiSoda.ttf?fileID=12800000&amp;guid=1735b91adc8eecb46942c124ab30e908&amp;type=3#KiwiSoda&quot;); font-size: 40px; top: 195px; width: 341px;"/>
             <ui:Button text="Back" name="BackButton" style="top: 300px; font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Fonts/KiwiSoda.ttf?fileID=12800000&amp;guid=1735b91adc8eecb46942c124ab30e908&amp;type=3#KiwiSoda&quot;); width: 144px; align-self: center;"/>
         </ui:GroupBox>
     </ui:VisualElement>
