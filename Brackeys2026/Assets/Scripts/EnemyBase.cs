@@ -85,7 +85,7 @@ public class EnemyBase : MonoBehaviour
                 inCombat = true;
             }
         }
-        else if (distanceToPlayer >= detectionRange && triggered)
+        else if (distanceToPlayer >= detectionRange && triggered && currentSlot != null)
         {
             agent.SetDestination(transform.position);
             slotManager.ResetSlot(currentSlot);
