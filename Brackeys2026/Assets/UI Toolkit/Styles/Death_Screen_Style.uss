@@ -11,12 +11,14 @@
     translate: 0 0;
     opacity: 0;
     display: flex;
+    transition-property: opacity;
+    transition-duration: 0.5s;
 }
 
 .visible {
     translate: 0 0;
     transition-property: opacity;
-    transition-duration: 1.25s;
+    transition-duration: 0.5s;
     transition-timing-function: ease-out;
 }
 

@@ -1,0 +1,16 @@
+.health-bar {
+    width: 64px;
+    height: 256px;
+    position: absolute;
+    justify-content: flex-end;
+    bottom: 824px;
+    overflow: hidden;
+}
+
+.health-icon {
+    width: 64px;
+    height: 256px;
+    position: absolute;
+    justify-content: flex-end;
+    background-image: url("project://database/Assets/Images/left_fist.png?fileID=21300000&guid=bdbe1911eaee43248bdd1d7d78daafa8&type=3#left_fist");
+}

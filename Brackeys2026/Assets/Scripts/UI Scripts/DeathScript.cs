@@ -25,6 +25,8 @@ public class DeathScript : MonoBehaviour
         deathRoot.RemoveFromClassList("hidden");
         deathRoot.AddToClassList("visible");
 
+        HealthScript.HideHealth();
+
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerControllerScript>();
         Time.timeScale = 0f;
         playerControllerScript.Sensitivity = 0f;

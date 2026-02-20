@@ -68,8 +68,9 @@ public class PauseScript : MonoBehaviour
                 if (keyControl != null && keyControl.wasPressedThisFrame)
                     if (!options)
                     {
-                        //TogglePause();
-                        DeathScript.Die();
+                        TogglePause();
+                        //DeathScript.Die();
+                        //HealthScript.SetHealth(70f, 100f);
                     }
                     else
                     {
@@ -90,6 +91,8 @@ public class PauseScript : MonoBehaviour
             pauseRoot.RemoveFromClassList("hidden");
             pauseRoot.AddToClassList("visible");
 
+            HealthScript.HideHealth();
+
             Time.timeScale = 0f;
             playerControllerScript.Sensitivity = 0f;
             playerControllerScript.Punch = false;
@@ -98,6 +101,8 @@ public class PauseScript : MonoBehaviour
         {
             pauseRoot.RemoveFromClassList("visible");
             pauseRoot.AddToClassList("hidden");
+
+            HealthScript.ShowHealth();
 
             Time.timeScale = 1f;
             playerControllerScript.Sensitivity = playerControllerScript.OriginalSensitivity;

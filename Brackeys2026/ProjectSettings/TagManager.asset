@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - EnemySlot
   - Water
+  - MainUI
   layers:
   - Default
   - TransparentFX
