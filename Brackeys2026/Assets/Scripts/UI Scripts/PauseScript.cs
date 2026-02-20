@@ -82,8 +82,9 @@ public class PauseScript : MonoBehaviour
                 if (keyControl != null && keyControl.wasPressedThisFrame)
                     if (!options)
                     {
-                        //TogglePause();
-                        DeathScript.Die();
+                        TogglePause();
+                        //DeathScript.Die();
+                        //HealthScript.SetHealth(70f, 100f);
                     }
                     else
                     {
