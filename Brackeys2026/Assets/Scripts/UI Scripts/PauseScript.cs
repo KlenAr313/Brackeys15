@@ -17,6 +17,8 @@ public class PauseScript : MonoBehaviour
     private Button optionsButton;
     private Button backButton;
     private Button exitButton;
+    private Slider musicSlider;
+    private Slider sfxSlider;
     private bool paused = false;
     private bool options = false;
 
@@ -40,6 +42,18 @@ public class PauseScript : MonoBehaviour
             backButton.RegisterCallback<ClickEvent>(OnOptionsClick);
             exitButton = pauseDocument.rootVisualElement.Q<Button>("ExitButton");
             exitButton.RegisterCallback<ClickEvent>(OnExitClick);
+
+            if (AudioManager.Instance != null)
+            {
+                musicSlider = pauseDocument.rootVisualElement.Q<Slider>("MusicSlider");
+                musicSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetMusic(evt.newValue); });
+                musicSlider.value = AudioManager.Instance.GetMusic();
+
+                sfxSlider = pauseDocument.rootVisualElement.Q<Slider>("SFXSlider");
+                sfxSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSFX(evt.newValue); });
+                sfxSlider.value   = AudioManager.Instance.GetSFX();
+            }
+        
         }
     }
 
@@ -54,7 +68,8 @@ public class PauseScript : MonoBehaviour
                 if (keyControl != null && keyControl.wasPressedThisFrame)
                     if (!options)
                     {
-                        TogglePause();
+                        //TogglePause();
+                        DeathScript.Die();
                     }
                     else
                     {
@@ -109,7 +124,6 @@ public class PauseScript : MonoBehaviour
             mainRoot.AddToClassList("visible");
         }
     }
-
 
     void OnResumeClick(ClickEvent evt)
     {
