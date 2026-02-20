@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerControllerScript : MonoBehaviour
 {
 
-    private CharacterController controller;
+    public CharacterController controller;
     public float MovementSpeed = 5f;
     public float Gravity = 1f;
     public float JumpForce = 10;
@@ -111,9 +111,22 @@ public class PlayerControllerScript : MonoBehaviour
 
 	public void Punch()
 	{
-		CustomAnimator[] Animations = GameObject.Find("Fists").GetComponents<CustomAnimator>();
+
+        int rnd = Random.Range(0, 4);
+        string fistName = null;
+        
+        switch (rnd)
+        {
+            case 0: fistName = "RFist"; break;
+            case 1: fistName = "RFist"; break;
+            case 2: fistName = "RFist"; break;
+            case 3: fistName = "LFist"; break;
+        };
+
+        CustomAnimator[] Animations = GameObject.Find(fistName).GetComponents<CustomAnimator>();
 
 		CustomAnimator punchAnimator = null;
+
 		foreach (CustomAnimator anim in Animations)
 		{
 			if (anim.animationName == "punch")
@@ -130,9 +143,8 @@ public class PlayerControllerScript : MonoBehaviour
 
 		punchAnimator.PlayAnimation();
 
-		if (Physics.Raycast(centerOfMass.transform.position, centerOfMass.transform.forward, out RaycastHit hit, 100f))
+		if (Physics.Raycast(centerOfMass.transform.position, centerOfMass.transform.forward, out RaycastHit hit, 1f))
         {
-			Debug.Log("Hit: " + hit.collider.name);
 			if(hit.collider.tag.ToLower() == "enemy")
 			{
 				EnemyBase enemy = hit.collider.GetComponent<EnemyBase>();

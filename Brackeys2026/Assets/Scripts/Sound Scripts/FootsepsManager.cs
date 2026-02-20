@@ -16,11 +16,14 @@ public class FootsepsManager : MonoBehaviour
 
     void Update()
     {
+        stepTimer -= Time.deltaTime;
+
         float horizontalSpeed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
+        //PlayerControllerScript.Instance.controller.velocity
         bool grounded = GameObject.Find("Player").GetComponent<CharacterController>().isGrounded;
-        if (horizontalSpeed > 0.01f && grounded)
+
+        if (PlayerControllerScript.Instance.controller.velocity.magnitude > 4.5f && grounded)
         {
-            stepTimer -= Time.deltaTime;
 
             if (stepTimer <= 0)
             {
@@ -30,7 +33,7 @@ public class FootsepsManager : MonoBehaviour
         }
     }
 
-    void PlayRandom()
+    public void PlayRandom()
     {
         int index = Random.Range(0, clips.Length);
 
