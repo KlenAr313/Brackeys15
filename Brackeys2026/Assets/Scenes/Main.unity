@@ -1181,6 +1181,8 @@ MonoBehaviour:
   controller: {fileID: 999708310}
   damage: 10
   health: 100
+  damage: 10
+  health: 100
   speedMody: 0
 --- !u!114 &999708310
 MonoBehaviour:
