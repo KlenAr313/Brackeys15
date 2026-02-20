@@ -51,6 +51,7 @@ public class EnemyBase : MonoBehaviour
         slotManager = FindFirstObjectByType<SlotManager>();
         player = GameObject.Find("Player").transform;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        damageInterval = Random.Range(2f, 4f);
     }
 
     void Update()
@@ -59,6 +60,7 @@ public class EnemyBase : MonoBehaviour
         if(damageTimer >= damageInterval)
         {
             damageTimer = 0;
+            damageInterval = Random.Range(2f, 4f);
             if (InCombat)
             {
                 PlayerControllerScript.Instance.TakeDamage(damage);

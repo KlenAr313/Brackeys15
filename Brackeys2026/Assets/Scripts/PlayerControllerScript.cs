@@ -10,6 +10,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     [SerializeField] private int damage = 10;
 	[SerializeField] private int health = 100;
+    private int maxHealth;
 	private GameObject centerOfMass;
 	public static PlayerControllerScript Instance;
 
@@ -31,6 +32,8 @@ public class PlayerControllerScript : MonoBehaviour
         {
             return;
         }
+
+        maxHealth = health;
 
         controller = GetComponent<CharacterController>();
 
@@ -157,6 +160,7 @@ public class PlayerControllerScript : MonoBehaviour
 	public void TakeDamage(int amount)
     {
         health -= amount;
+        HealthScript.SetHealth(health, maxHealth);
         if (health <= 0)
         {
             Die();
@@ -166,8 +170,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     private void Die()
     {
-		//TODO: Add death animation and game over system
-        Debug.Log("You Died!");
+		DeathScript.Die();
+        //Debug.Log("You Died!");
     }
 
 
