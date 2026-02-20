@@ -17,6 +17,8 @@ public class PauseScript : MonoBehaviour
     private Button optionsButton;
     private Button backButton;
     private Button exitButton;
+    private Slider musicSlider;
+    private Slider sfxSlider;
     private bool paused = false;
     private bool options = false;
 
@@ -40,6 +42,18 @@ public class PauseScript : MonoBehaviour
             backButton.RegisterCallback<ClickEvent>(OnOptionsClick);
             exitButton = pauseDocument.rootVisualElement.Q<Button>("ExitButton");
             exitButton.RegisterCallback<ClickEvent>(OnExitClick);
+
+            if (AudioManager.Instance != null)
+            {
+                musicSlider = pauseDocument.rootVisualElement.Q<Slider>("MusicSlider");
+                musicSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetMusic(evt.newValue); });
+                musicSlider.value = AudioManager.Instance.GetMusic();
+
+                sfxSlider = pauseDocument.rootVisualElement.Q<Slider>("SFXSlider");
+                sfxSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSFX(evt.newValue); });
+                sfxSlider.value   = AudioManager.Instance.GetSFX();
+            }
+        
         }
     }
 
@@ -68,25 +82,29 @@ public class PauseScript : MonoBehaviour
     void TogglePause()
     {
         paused = !paused;
-        InputHandler playerControllerScript = GameObject.Find("Player").GetComponent<InputHandler>();
+        InputHandler inputHandler = GameObject.Find("Player").GetComponent<InputHandler>();
 
         if (paused)
         {
             pauseRoot.RemoveFromClassList("hidden");
             pauseRoot.AddToClassList("visible");
 
+            HealthScript.HideHealth();
+
             Time.timeScale = 0f;
-            playerControllerScript.Sensitivity = 0f;
-            playerControllerScript.Punch = false;
+            inputHandler.Sensitivity = 0f;
+            inputHandler.Punch = false;
         }
         else
         {
             pauseRoot.RemoveFromClassList("visible");
             pauseRoot.AddToClassList("hidden");
 
+            HealthScript.ShowHealth();
+
             Time.timeScale = 1f;
-            playerControllerScript.Sensitivity = playerControllerScript.OriginalSensitivity;
-            playerControllerScript.Punch = false;
+            inputHandler.Sensitivity = inputHandler.OriginalSensitivity;
+            inputHandler.Punch = false;
         }
     }
 
@@ -109,7 +127,6 @@ public class PauseScript : MonoBehaviour
             mainRoot.AddToClassList("visible");
         }
     }
-
 
     void OnResumeClick(ClickEvent evt)
     {
