@@ -21,7 +21,7 @@ public class HealthScript : MonoBehaviour
 
 
 
-    public static void SetHealth(float current, float max)
+    public static void SetHealth(float current, float max = 100)
     {
         float percent = current / max;
 

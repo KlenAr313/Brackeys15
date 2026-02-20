@@ -69,10 +69,6 @@ public class PauseScript : MonoBehaviour
                     if (!options)
                     {
                         TogglePause();
-                        //DeathScript.Die();
-                        //HealthScript.SetHealth(70f, 100f);
-                        //DeathScript.Die();
-                        //HealthScript.SetHealth(70f, 100f);
                     }
                     else
                     {
@@ -86,7 +82,7 @@ public class PauseScript : MonoBehaviour
     void TogglePause()
     {
         paused = !paused;
-        InputHandler playerControllerScript = GameObject.Find("Player").GetComponent<InputHandler>();
+        InputHandler inputHandler = GameObject.Find("Player").GetComponent<InputHandler>();
 
         if (paused)
         {
@@ -95,11 +91,9 @@ public class PauseScript : MonoBehaviour
 
             HealthScript.HideHealth();
 
-            HealthScript.HideHealth();
-
             Time.timeScale = 0f;
-            playerControllerScript.Sensitivity = 0f;
-            playerControllerScript.Punch = false;
+            inputHandler.Sensitivity = 0f;
+            inputHandler.Punch = false;
         }
         else
         {
@@ -108,11 +102,9 @@ public class PauseScript : MonoBehaviour
 
             HealthScript.ShowHealth();
 
-            HealthScript.ShowHealth();
-
             Time.timeScale = 1f;
-            playerControllerScript.Sensitivity = playerControllerScript.OriginalSensitivity;
-            playerControllerScript.Punch = false;
+            inputHandler.Sensitivity = inputHandler.OriginalSensitivity;
+            inputHandler.Punch = false;
         }
     }
 

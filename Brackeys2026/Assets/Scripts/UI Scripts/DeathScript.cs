@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 public class DeathScript : MonoBehaviour
 {
     [SerializeField] private UIDocument deathDocument;
+    static InputHandler inputHandler;
     static PlayerControllerScript playerControllerScript;
     static VisualElement deathRoot;
     Button respawnButton;
@@ -18,6 +19,7 @@ public class DeathScript : MonoBehaviour
         respawnButton.RegisterCallback<ClickEvent>(OnRespawnClick);
         exitButton = deathDocument.rootVisualElement.Q<Button>("ExitButton");
         exitButton.RegisterCallback<ClickEvent>(OnExitClick);
+        inputHandler = GameObject.Find("Player").GetComponent<InputHandler>();
     }
 
     public static void Die()
@@ -27,17 +29,16 @@ public class DeathScript : MonoBehaviour
 
         HealthScript.HideHealth();
 
-        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerControllerScript>();
         Time.timeScale = 0f;
-        playerControllerScript.Sensitivity = 0f;
-        playerControllerScript.Punch = false;
+        inputHandler.Sensitivity = 0f;
+        inputHandler.Punch = false;
     }
 
     void OnRespawnClick(ClickEvent evt)
     {
         Time.timeScale = 1f;
-        playerControllerScript.Sensitivity = playerControllerScript.OriginalSensitivity;
-        playerControllerScript.Punch = false;
+        inputHandler.Sensitivity = inputHandler.OriginalSensitivity;
+        inputHandler.Punch = false;
     }
 
     void OnExitClick(ClickEvent evt)

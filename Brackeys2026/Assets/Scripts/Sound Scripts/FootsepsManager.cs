@@ -17,7 +17,8 @@ public class FootsepsManager : MonoBehaviour
     void Update()
     {
         float horizontalSpeed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
-        if (horizontalSpeed > 0.01f && rb.linearVelocity.y == 0f)
+        bool grounded = GameObject.Find("Player").GetComponent<CharacterController>().isGrounded;
+        if (horizontalSpeed > 0.01f && grounded)
         {
             stepTimer -= Time.deltaTime;
 
