@@ -14,10 +14,12 @@ public class PlayerControllerScript : MonoBehaviour
 	public static PlayerControllerScript Instance;
 
 	//protected bool canJump;
+    private bool isJumping = false;
+    private bool isJumpingLastFrame = false;
 
 	private bool inWater;
 
-    private float verticalVelocity = 0f;
+    [SerializeField]private float verticalVelocity = 0f;
 
      void Start()
     {
@@ -35,26 +37,47 @@ public class PlayerControllerScript : MonoBehaviour
         centerOfMass = GameObject.Find("Camera");
     }
 
-    public void Move(Vector2 movementVector)
+    void Update()
     {
-        Vector3 move = transform.forward * movementVector.y + transform.right * movementVector.x;
-        move = move * MovementSpeed * Time.deltaTime;
-
-        if (inWater)
-		{
-			move = move * 0.4f;
-		}
-
-        controller.Move(move);
-
-        verticalVelocity = verticalVelocity + Gravity * Time.deltaTime;
-        controller.Move(new Vector3(0, verticalVelocity, 0) * Time.deltaTime);
+        isJumpingLastFrame = isJumping;
     }
+
+    public void Move(Vector2 movementVector)
+{
+    Vector3 move = transform.forward * movementVector.y + transform.right * movementVector.x;
+    move *= MovementSpeed * Time.deltaTime;
+
+    if (inWater)
+        move *= 0.4f;
+
+    // Ground reset
+    if (controller.isGrounded && verticalVelocity < 0)
+    {
+        verticalVelocity = -2f; // small downward force to keep grounded
+    }
+
+    // Apply gravity differently when falling
+    if (verticalVelocity < 0)
+    {
+        // Falling
+        verticalVelocity += Gravity * 2.5f * Time.deltaTime; // fall multiplier
+    }
+    else
+    {
+        // Rising
+        verticalVelocity += Gravity * Time.deltaTime;
+    }
+
+    Vector3 verticalMove = new Vector3(0, verticalVelocity, 0) * Time.deltaTime;
+
+    controller.Move(move + verticalMove);
+}
 
     public void Jump()
     {
         if(controller.isGrounded)
         {
+            isJumping = true;
             verticalVelocity = JumpForce;
         }
     }
@@ -62,8 +85,10 @@ public class PlayerControllerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
 	{
-		//if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-			//canJump = true;
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            //canJump = true;
+        }
 		
 		if (collision.gameObject.tag == "Water")
 		{
@@ -73,8 +98,10 @@ public class PlayerControllerScript : MonoBehaviour
 
 	private void OnCollisionExit(Collision collision)
 	{
-		//if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-			//canJump = false;
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            //canJump = false;
+        }
 
 		if (collision.gameObject.tag == "Water")
 		{

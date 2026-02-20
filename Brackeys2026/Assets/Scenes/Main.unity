@@ -869,8 +869,8 @@ Transform:
   m_GameObject: {fileID: 364071371}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.46094516, w: 0.88742864}
-  m_LocalPosition: {x: -3.31, y: 0.22, z: -3.53}
-  m_LocalScale: {x: 1, y: 4.2561, z: 1}
+  m_LocalPosition: {x: -1.78, y: 0.5, z: -3.53}
+  m_LocalScale: {x: 1, y: 16.145058, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1195,7 +1195,6 @@ GameObject:
   - component: {fileID: 999708315}
   - component: {fileID: 999708314}
   - component: {fileID: 999708311}
-  - component: {fileID: 999708309}
   - component: {fileID: 999708317}
   - component: {fileID: 999708318}
   - component: {fileID: 999708319}
@@ -1207,22 +1206,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &999708309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 999708308}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df21d2069560c9f4fa095833c23fa009, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovementScript
-  controller: {fileID: 0}
-  damage: 50
-  health: 100
-  speedMody: 0
 --- !u!54 &999708311
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1267,7 +1250,7 @@ Transform:
   m_GameObject: {fileID: 999708308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1326,7 +1309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputHandler
   movementSpeed: 50
-  jumpForce: 50
+  jumpForce: 10
   sensitivity: 1
   verticalDirection:
     m_Name: Vertical Direction
@@ -1384,7 +1367,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControllerScript
   MovementSpeed: 5
-  Gravity: -1
+  Gravity: -10
+  JumpForce: 6
+  damage: 50
+  health: 100
+  verticalVelocity: 0
 --- !u!1 &1012005780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,7 +1993,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2110690390}
-  - component: {fileID: 2110690391}
   m_Layer: 11
   m_Name: Camera
   m_TagString: Untagged
@@ -2023,7 +2009,7 @@ Transform:
   m_GameObject: {fileID: 2110690389}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.03, z: 0}
+  m_LocalPosition: {x: 0, y: 0.041, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2031,29 +2017,6 @@ Transform:
   - {fileID: 57218823}
   m_Father: {fileID: 999708315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &2110690391
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110690389}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2138528583
 GameObject:
   m_ObjectHideFlags: 0
