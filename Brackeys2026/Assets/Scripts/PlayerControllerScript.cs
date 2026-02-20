@@ -1,64 +1,162 @@
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class PlayerControllerScript : EntityControllerScript
+public class PlayerControllerScript : MonoBehaviour
 {
-	[SerializeField] private float sensitivity;
-	private float originalSensitivity;
-	[SerializeField] private InputAction horizontalDirections;
-	[SerializeField] private InputAction verticalDirection;
-	[SerializeField] private InputAction horizontalSpeed;
 
-	[SerializeField] private InputAction punchAction;
+    private CharacterController controller;
+    public float MovementSpeed = 5f;
+    public float Gravity = 1f;
+    public float JumpForce = 10;
 
-	private Transform cameraParentTransform;
+    [SerializeField] private int damage = 10;
+	[SerializeField] private int health = 100;
+	private GameObject centerOfMass;
+	public static PlayerControllerScript Instance;
 
-	private float xRotation;
-	private float yRotation;
+	//protected bool canJump;
+    private bool isJumping = false;
+    private bool isJumpingLastFrame = false;
 
-    public float Sensitivity { get => sensitivity; set => sensitivity = value; }
-    public float OriginalSensitivity { get => originalSensitivity; set => originalSensitivity = value; }
+	private bool inWater;
 
-    private new void Start()
+    [SerializeField]private float verticalVelocity = 0f;
+
+     void Start()
     {
-		base.Start();
-		OriginalSensitivity = sensitivity;
-		cameraParentTransform = GameObject.Find("Camera").transform;
-	}
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            return;
+        }
 
-    private void OnEnable()
+        controller = GetComponent<CharacterController>();
+
+        centerOfMass = GameObject.Find("Camera");
+    }
+
+    void Update()
+    {
+        isJumpingLastFrame = isJumping;
+    }
+
+    public void Move(Vector2 movementVector)
+{
+    Vector3 move = transform.forward * movementVector.y + transform.right * movementVector.x;
+    move *= MovementSpeed * Time.deltaTime;
+
+    if (inWater)
+        move *= 0.4f;
+
+    // Ground reset
+    if (controller.isGrounded && verticalVelocity < 0)
+    {
+        verticalVelocity = -2f; // small downward force to keep grounded
+    }
+
+    // Apply gravity differently when falling
+    if (verticalVelocity < 0)
+    {
+        // Falling
+        verticalVelocity += Gravity * 2.5f * Time.deltaTime; // fall multiplier
+    }
+    else
+    {
+        // Rising
+        verticalVelocity += Gravity * Time.deltaTime;
+    }
+
+    Vector3 verticalMove = new Vector3(0, verticalVelocity, 0) * Time.deltaTime;
+
+    controller.Move(move + verticalMove);
+}
+
+    public void Jump()
+    {
+        if(controller.isGrounded)
+        {
+            isJumping = true;
+            verticalVelocity = JumpForce;
+        }
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
 	{
-		horizontalDirections.Enable();
-		verticalDirection.Enable();
-		punchAction.Enable();
-	}
-
-	private void OnDisable()
-	{
-		horizontalDirections.Disable();
-		verticalDirection.Disable();
-		punchAction.Disable();
-	}
-
-	private void Update()
-	{
-		direction = Vector2Rotate(horizontalDirections.ReadValue<Vector2>(), -cameraParentTransform.localEulerAngles.y);
-		jump = verticalDirection.IsPressed();
-
-		Vector2 mouseMovement = Mouse.current.delta.ReadValue();
-
-		yRotation += mouseMovement.x * Sensitivity;
-		xRotation -= mouseMovement.y * Sensitivity;
-
-		xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-		cameraParentTransform.localEulerAngles = new Vector3(xRotation, yRotation, 0f);
-
-		if(punchAction.triggered)
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            //canJump = true;
+        }
+		
+		if (collision.gameObject.tag == "Water")
 		{
-			punch = true;
+			inWater = true;
 		}
 	}
+
+	private void OnCollisionExit(Collision collision)
+	{
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            //canJump = false;
+        }
+
+		if (collision.gameObject.tag == "Water")
+		{
+			inWater = false;
+		}
+	}
+
+	public void Punch()
+	{
+		CustomAnimator[] Animations = GameObject.Find("Fists").GetComponents<CustomAnimator>();
+
+		CustomAnimator punchAnimator = null;
+		foreach (CustomAnimator anim in Animations)
+		{
+			if (anim.animationName == "punch")
+			{
+				punchAnimator = anim;
+				break;
+			}
+		}
+
+		if (punchAnimator == null || punchAnimator.IsPlaying)
+		{
+			return;
+		}
+
+		punchAnimator.PlayAnimation();
+
+		if (Physics.Raycast(centerOfMass.transform.position, centerOfMass.transform.forward, out RaycastHit hit, 100f))
+        {
+			Debug.Log("Hit: " + hit.collider.name);
+			if(hit.collider.tag.ToLower() == "enemy")
+			{
+				EnemyBase enemy = hit.collider.GetComponent<EnemyBase>();
+
+				enemy.TakeDamage(damage);
+			}
+        }
+	}
+
+	public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
+            Die();
+        }
+		Debug.Log("Player Health: " + health);
+    }
+
+    private void Die()
+    {
+		//TODO: Add death animation and game over system
+        Debug.Log("You Died!");
+    }
+
 
 }

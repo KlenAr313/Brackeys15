@@ -40,15 +40,16 @@ public class MovementScript : MonoBehaviour
 	private void FixedUpdate()
 	{
 		
-		force = controller.MovementSpeed * Time.fixedDeltaTime * controller.Direction;
+		force = controller.MovementSpeed * controller.Direction;
 		if (inWater)
 		{
 			force = force * 0.4f;
 		}
-		rigidbody.linearVelocity = new Vector3(force.x, rigidbody.linearVelocity.y, force.y);
+		//rigidbody.linearVelocity = new Vector3(force.x, rigidbody.linearVelocity.y, force.y);
+		rigidbody.AddForce(new Vector3(force.x, 0, force.y));
 
 		if (controller.Jump && canJump)
-			rigidbody.linearVelocity += new Vector3(0, controller.JumpForce * Time.fixedDeltaTime, 0);
+			rigidbody.AddForce(new Vector3(0, controller.JumpForce, 0));
 
 		if (controller.Punch)
 		{
