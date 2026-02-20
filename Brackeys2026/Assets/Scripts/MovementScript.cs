@@ -6,8 +6,11 @@ public class MovementScript : MonoBehaviour
 {
 	[SerializeField] private EntityControllerScript controller;
 	[SerializeField] private int damage = 10;
+	[SerializeField] private int health = 100;
 	private GameObject centerOfMass;
 	[SerializeField] private float speedMody;
+
+	public static MovementScript Instance;
 
 	private new Rigidbody rigidbody;
 	protected bool canJump;
@@ -17,6 +20,16 @@ public class MovementScript : MonoBehaviour
 
 	private void Start()
 	{
+
+		if(Instance == null)
+		{
+			Instance = this;
+		}
+		else
+		{
+			return;
+		}
+
 		rigidbody = gameObject.GetComponent<Rigidbody>();
 		centerOfMass = GameObject.Find("Camera");
 
@@ -97,4 +110,20 @@ public class MovementScript : MonoBehaviour
 			}
         }
 	}
+
+	public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
+            Die();
+        }
+		Debug.Log("Player Health: " + health);
+    }
+
+    private void Die()
+    {
+		//TODO: Add death animation and game over system
+        Debug.Log("You Died!");
+    }
 }

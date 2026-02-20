@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 869985556399415321}
   - component: {fileID: 676895947670269788}
   - component: {fileID: 3763607427925168949}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,9 +103,8 @@ GameObject:
   - component: {fileID: 4225265419361154334}
   - component: {fileID: 6483679361741543570}
   - component: {fileID: -334899070142269749}
-  - component: {fileID: 7464960926965753554}
   - component: {fileID: 2212252599933991038}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: NPC
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -192,22 +191,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7464960926965753554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3773247448988033611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a42710b08706984da8edbffd31a6054, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  player: {fileID: 0}
-  agent: {fileID: -334899070142269749}
-  detectionRange: 30
-  UpdateInterval: 0.5
 --- !u!114 &2212252599933991038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,3 +205,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBase
   health: 100
   damage: 10
+  damageInterval: 3
+  player: {fileID: 0}
+  agent: {fileID: 0}
+  detectionRange: 10
+  UpdateInterval: 0.5
+  triggered: 1
+  stayTriggered: 1
+  currentSlot: {fileID: 0}
