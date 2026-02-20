@@ -43,7 +43,7 @@ public class MovementScript : MonoBehaviour
 		force = controller.MovementSpeed * Time.fixedDeltaTime * controller.Direction;
 		if (inWater)
 		{
-			force = force * 0.4f;
+			force *= speedMody;
 		}
 		rigidbody.linearVelocity = new Vector3(force.x, rigidbody.linearVelocity.y, force.y);
 
