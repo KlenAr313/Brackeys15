@@ -38,7 +38,11 @@ public class EnemyBase : MonoBehaviour
 
     private void Die()
     {
-        SlotManager.Instance.ResetSlot(this.gameObject.GetComponent<NpcMovementNav>().currentSlot);
+        if(this.currentSlot != null)
+        {
+            slotManager.ResetSlot(this.currentSlot);
+        }
+        
         Destroy(gameObject);
     }
 

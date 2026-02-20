@@ -102,6 +102,7 @@ public class MovementScript : MonoBehaviour
 
 		if (Physics.Raycast(centerOfMass.transform.position, centerOfMass.transform.forward, out RaycastHit hit, 100f))
         {
+			Debug.Log("Hit: " + hit.collider.name);
 			if(hit.collider.tag.ToLower() == "enemy")
 			{
 				EnemyBase enemy = hit.collider.GetComponent<EnemyBase>();
