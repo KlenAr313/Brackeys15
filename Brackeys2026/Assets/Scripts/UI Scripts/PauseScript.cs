@@ -68,7 +68,7 @@ public class PauseScript : MonoBehaviour
     void TogglePause()
     {
         paused = !paused;
-        PlayerControllerScript playerControllerScript = GameObject.Find("Player").GetComponent<PlayerControllerScript>();
+        InputHandler playerControllerScript = GameObject.Find("Player").GetComponent<InputHandler>();
 
         if (paused)
         {

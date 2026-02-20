@@ -61,7 +61,7 @@ public class EnemyBase : MonoBehaviour
             damageTimer = 0;
             if (InCombat)
             {
-                MovementScript.Instance.TakeDamage(damage);
+                PlayerControllerScript.Instance.TakeDamage(damage);
             }
         }
 
