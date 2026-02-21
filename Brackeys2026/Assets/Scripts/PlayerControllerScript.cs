@@ -188,7 +188,6 @@ public class PlayerControllerScript : MonoBehaviour
         {
             Die();
         }
-		Debug.Log("Player Health: " + health);
     }
 
     private void Die()

@@ -12,6 +12,8 @@ public class CameraEffect : MonoBehaviour
     [SerializeField]
     private float duration = 3.0f;
 
+    [SerializeField] private float ScaleIntensity = 0.3f;
+    [SerializeField] private float hueShiftIntensity = 100f;
     [SerializeField]
     private float distiortionSpeed = 5.0f;
     [SerializeField]
@@ -39,10 +41,8 @@ public class CameraEffect : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
 	{
-        Debug.Log("Collided with " + collision.gameObject.name);
         if (collision.gameObject.tag.ToLower() == "player")
 		{
-            Debug.Log("Triggering nausea effect");
 			TriggerNausea();
 		}
 	}
@@ -59,10 +59,10 @@ public class CameraEffect : MonoBehaviour
         {
             elapsed += Time.deltaTime;
         // Cycles the hue from -180 to 180 over time
-            float shift = Mathf.PingPong(Time.time * 500, 360) - 180;
+            float shift = Mathf.PingPong(Time.time * hueShiftIntensity, 360) - 180;
             colorAdjustments.hueShift.value = shift;
 
-            float wave = Mathf.Sin(Time.time * distiortionSpeed);
+            float wave = Mathf.Sin(Time.time * distiortionSpeed) * ScaleIntensity;
             lensDistortion.intensity.value = wave * maxDistortion;
             lensDistortion.scale.value = 1.0f + (wave * scalePulse);
 
