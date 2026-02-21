@@ -13,6 +13,7 @@ public class NPCInteractScript : MonoBehaviour
     [SerializeField] private float dialogueSpeed;
     [SerializeField] private string characterName;
     [SerializeField] private string[] sentences;
+    [SerializeField] private bool triggering = false;
     [SerializeField] private float interactionRange = 2f;
     [SerializeField] private KeyCode interactionKey = KeyCode.E;
     [SerializeField] private float frequency = 0.2f;
@@ -106,6 +107,10 @@ public class NPCInteractScript : MonoBehaviour
             {
                 ind = 0;
                 HideDialogue();
+                if (triggering)
+                {
+                    gameObject.GetComponent<EnemyBase>().Trigger();
+                }
             }
         }
         else
