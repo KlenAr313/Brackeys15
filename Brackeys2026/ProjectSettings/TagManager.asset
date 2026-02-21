@@ -12,6 +12,7 @@ TagManager:
   - MainUI
   - SpawnPoint
   - NauseaTrigger
+  - HealthPickup
   layers:
   - Default
   - TransparentFX

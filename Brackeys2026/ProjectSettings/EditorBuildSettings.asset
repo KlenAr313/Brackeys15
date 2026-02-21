@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 5e930939bbf5f8b4fb31f81c37f17435
-  - enabled: 0
-    path: Assets/Scenes/Main.unity
-    guid: 078912f6c7834114aba1f0445d1f1d59
   - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 899038511f5211e4f8bb6fbd5e18b7dc
+  - enabled: 0
     path: Assets/Scenes/Gergo.unity
     guid: 1b94391e0cf080740b077423404108d1
   m_configObjects:
