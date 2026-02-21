@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerControllerScript : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerControllerScript : MonoBehaviour
     private GameObject spawnPoint;
     [SerializeField] private int damage = 10;
 	[SerializeField] private int health = 100;
+    [SerializeField] private int hpGain = 30;
     private int maxHealth;
 	private GameObject centerOfMass;
 	public static PlayerControllerScript Instance;
@@ -94,9 +96,12 @@ public class PlayerControllerScript : MonoBehaviour
 		{
 			spawnPoint = collision.gameObject;
 		}
-        if (collision.gameObject.tag.ToLower() == "healthpack")
+        if (collision.gameObject.tag.ToLower() == "healthpickup")
 		{
-			
+            health += hpGain;
+            if (health > maxHealth) { health = maxHealth; }
+			HealthScript.SetHealth(health, maxHealth);
+            Destroy(collision.gameObject);
 		}
 	}
 
