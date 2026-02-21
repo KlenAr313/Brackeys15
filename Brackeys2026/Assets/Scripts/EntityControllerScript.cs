@@ -24,11 +24,4 @@ public abstract class EntityControllerScript : MonoBehaviour
 
 		return new Vector2(cos * vector.x - sin * vector.y, sin * vector.x + cos * vector.y);
 	}
-
-	protected void Start()
-	{
-		rigidbody = GetComponent<Rigidbody>();
-		rigidbody.freezeRotation = true;
-		rigidbody.useGravity = true;
-	}
 }

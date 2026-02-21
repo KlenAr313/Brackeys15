@@ -6,20 +6,12 @@ public class FootsepsManager : MonoBehaviour
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip[] clips;
     [SerializeField] float stepInterval = 0.4f;
-    private Rigidbody rb;
     private float stepTimer;
-
-    void Start()
-    {
-        rb = GameObject.Find("Player").GetComponent<Rigidbody>();
-    }
-
+    
     void Update()
     {
         stepTimer -= Time.deltaTime;
 
-        float horizontalSpeed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
-        //PlayerControllerScript.Instance.controller.velocity
         bool grounded = GameObject.Find("Player").GetComponent<CharacterController>().isGrounded;
 
         if (PlayerControllerScript.Instance.controller.velocity.magnitude > 4.5f && grounded)
