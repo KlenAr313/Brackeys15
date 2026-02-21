@@ -10,6 +10,7 @@ TagManager:
   - EnemySlot
   - Water
   - MainUI
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

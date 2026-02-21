@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UI%20Toolkit/Styles/health_stlye.uss?fileID=7433441132597879392&amp;guid=4ae96c6bd3cb7464096acbcf69afd29d&amp;type=3#health_stlye"/>
     <Style src="project://database/Assets/UI%20Toolkit/Styles/Death_Screen_Style.uss?fileID=7433441132597879392&amp;guid=3ec5237faa153b444b30b61d34732b04&amp;type=3#Death_Screen_Style"/>
     <ui:VisualElement name="MissingHealthRoot" class="health-bar">
-        <ui:VisualElement name="MissingHealth" class="health-fill health-icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/left_fist.png?fileID=21300000&amp;guid=bdbe1911eaee43248bdd1d7d78daafa8&amp;type=3#left_fist&quot;); overflow: hidden; opacity: 0.3;"/>
+        <ui:VisualElement name="MissingHealth" class="health-fill health-icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/s%C3%B6r.png?fileID=21300000&amp;guid=2f649b77852852c4a9f409117107ccb2&amp;type=3#sör&quot;); overflow: hidden; opacity: 0.3;"/>
     </ui:VisualElement>
     <ui:VisualElement name="FullHealthRoot" class="health-bar" style="overflow: hidden;">
         <ui:VisualElement name="FullHealth" class="health-bg health-icon" style="overflow: hidden; bottom: 0;"/>

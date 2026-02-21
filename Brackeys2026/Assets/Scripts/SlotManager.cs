@@ -14,6 +14,8 @@ public class SlotManager : MonoBehaviour
 
     public static SlotManager Instance { get => instance; set => instance = value; }
 
+    public List<EnemyBase> Enemies;
+
     void Start()
     {
         if(Instance == null)
@@ -68,6 +70,5 @@ public class SlotManager : MonoBehaviour
         if (slotStatus.ContainsKey(slot))
             slotStatus[slot] = true;
     }
-
 
 }

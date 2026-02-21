@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class EnemyBase : MonoBehaviour
     private bool inCombat = false;
 
     private float damageTimer = 0;
+    private Vector3 originalPosition;
 
     public bool InCombat { get => inCombat; set => inCombat = value; }
     public void Trigger() { triggered = true; }
@@ -41,6 +43,7 @@ public class EnemyBase : MonoBehaviour
         if(this.currentSlot != null)
         {
             slotManager.ResetSlot(this.currentSlot);
+            slotManager.Enemies.Remove(this);
         }
         
         Destroy(gameObject);
@@ -52,6 +55,8 @@ public class EnemyBase : MonoBehaviour
         player = GameObject.Find("Player").transform;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         damageInterval = Random.Range(2f, 4f);
+        slotManager.Enemies.Add(this);
+        originalPosition = this.gameObject.transform.position;
     }
 
     void Update()
@@ -118,5 +123,13 @@ public class EnemyBase : MonoBehaviour
             return false;
 
         return true;
+    }
+
+    public void Reset()
+    {
+        triggered = true;
+        inCombat = false;
+        damageTimer = 0;
+        this.gameObject.transform.position = originalPosition;
     }
 }

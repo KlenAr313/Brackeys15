@@ -36,9 +36,13 @@ public class DeathScript : MonoBehaviour
 
     void OnRespawnClick(ClickEvent evt)
     {
+        deathRoot.RemoveFromClassList("visible");
+        deathRoot.AddToClassList("hidden");
         Time.timeScale = 1f;
         inputHandler.Sensitivity = inputHandler.OriginalSensitivity;
         inputHandler.Punch = false;
+        HealthScript.ShowHealth();
+        PlayerControllerScript.Instance.Respawn();
     }
 
     void OnExitClick(ClickEvent evt)

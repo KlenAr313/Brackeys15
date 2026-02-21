@@ -8,6 +8,7 @@ public class PlayerControllerScript : MonoBehaviour
     public float Gravity = 1f;
     public float JumpForce = 10;
 
+    [SerializeField] private GameObject spawnPoint;
     [SerializeField] private int damage = 10;
 	[SerializeField] private int health = 100;
     private int maxHealth;
@@ -85,6 +86,13 @@ public class PlayerControllerScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider collision)
+	{
+        if (collision.gameObject.tag.ToLower() == "spawnpoint")
+		{
+			spawnPoint = collision.gameObject;
+		}
+	}
 
     private void OnCollisionEnter(Collision collision)
 	{
@@ -171,8 +179,24 @@ public class PlayerControllerScript : MonoBehaviour
     private void Die()
     {
 		DeathScript.Die();
-        //Debug.Log("You Died!");
     }
 
+    public void Respawn()
+    {
+        controller.enabled = false;
+        this.gameObject.transform.position = spawnPoint.transform.position;
+        controller.enabled = true;
+        verticalVelocity = 0f;
+        health = maxHealth;
+        HealthScript.SetHealth(health, maxHealth);
 
+        foreach (EnemyBase enemy in SlotManager.Instance.Enemies)
+        {
+            if(enemy != null)
+            {
+                enemy.Reset();
+            }
+                
+        }
+    }
 }
