@@ -116,11 +116,11 @@ public class PlayerControllerScript : MonoBehaviour
 			HealthScript.SetHealth(health, maxHealth);
             Destroy(collision.gameObject);
 		}
-        
+
 		if (collision.gameObject.tag.ToLower() == "water")
 		{
 			inWater = true;
-			waterDebuffTimer = 300;
+			waterDebuffTimer = 600;
 		}
 	}
 
