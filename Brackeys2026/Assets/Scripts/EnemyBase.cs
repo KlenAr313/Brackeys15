@@ -31,6 +31,12 @@ public class EnemyBase : MonoBehaviour
     public bool InCombat { get => inCombat; set => inCombat = value; }
     public virtual void Trigger() { triggered = true; }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
+
     public void TakeDamage(int amount)
     {
         health -= amount;
