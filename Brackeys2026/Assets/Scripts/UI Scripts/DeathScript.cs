@@ -11,10 +11,11 @@ public class DeathScript : MonoBehaviour
     Button respawnButton;
     Button exitButton;
 
-    void Start()
+    void OnEnable()
     {
         deathRoot = deathDocument.rootVisualElement.Q<VisualElement>("DeathRoot");
         deathRoot.AddToClassList("hidden");
+        deathRoot.style.display = DisplayStyle.None;
         respawnButton = deathDocument.rootVisualElement.Q<Button>("RespawnButton");
         respawnButton.RegisterCallback<ClickEvent>(OnRespawnClick);
         exitButton = deathDocument.rootVisualElement.Q<Button>("ExitButton");
@@ -26,22 +27,26 @@ public class DeathScript : MonoBehaviour
     {
         deathRoot.RemoveFromClassList("hidden");
         deathRoot.AddToClassList("visible");
+        deathRoot.style.display = DisplayStyle.Flex;
 
         HealthScript.HideHealth();
 
         Time.timeScale = 0f;
         inputHandler.Sensitivity = 0f;
-        inputHandler.Punch = false;
+        PlayerControllerScript.Instance.canPunch = false;
     }
 
     void OnRespawnClick(ClickEvent evt)
     {
         deathRoot.RemoveFromClassList("visible");
         deathRoot.AddToClassList("hidden");
+        deathRoot.style.display = DisplayStyle.None;
+
+        HealthScript.ShowHealth();
+
         Time.timeScale = 1f;
         inputHandler.Sensitivity = inputHandler.OriginalSensitivity;
-        inputHandler.Punch = false;
-        HealthScript.ShowHealth();
+        PlayerControllerScript.Instance.canPunch = true;
         PlayerControllerScript.Instance.Respawn();
     }
 

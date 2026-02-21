@@ -25,7 +25,8 @@ public class InputHandler : EntityControllerScript
 		base.Start();
 
 		//horizontalDirections = InputSystem.actions.FindAction("Move");
-		OriginalSensitivity = sensitivity;
+		//OriginalSensitivity = sensitivity;
+		OriginalSensitivity = AudioManager.Instance.GetSens();
 		cameraParentTransform = GameObject.Find("Camera").transform;
 
 		if(horizontalDirections != null)
