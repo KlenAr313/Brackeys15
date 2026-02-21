@@ -746,5 +746,6 @@ MonoBehaviour:
   MovementSpeed: 5
   Gravity: -10
   JumpForce: 6
+  spawnPoint: {fileID: 0}
   damage: 50
   health: 100
