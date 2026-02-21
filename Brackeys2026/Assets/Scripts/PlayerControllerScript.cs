@@ -127,7 +127,7 @@ public class PlayerControllerScript : MonoBehaviour
 		if (collision.gameObject.tag.ToLower() == "water")
 		{
 			inWater = true;
-			waterDebuffTimer = 300;
+			waterDebuffTimer = 600;
 		}
 	}
 
