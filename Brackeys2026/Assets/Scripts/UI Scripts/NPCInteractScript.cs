@@ -64,7 +64,7 @@ public class NPCInteractScript : MonoBehaviour
         }
 
         // DEBUG (SANTER) CLAUSE UNTIL NPCS ARE IMPLEMENTED NORMALLY
-        playerInRange = true;
+        //playerInRange = true;
 
         if (playerInRange && pressed)
         {
@@ -82,7 +82,6 @@ public class NPCInteractScript : MonoBehaviour
 
     void ShowDialogue()
     {
-        UnityEngine.Debug.Log("wow");
         dialogueActive = true;
         if (dialogueRoot != null || nameLabel != null)
             dialogueRoot.style.display = DisplayStyle.Flex;
