@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerScript : MonoBehaviour
 {
@@ -102,6 +103,11 @@ public class PlayerControllerScript : MonoBehaviour
             if (health > maxHealth) { health = maxHealth; }
 			HealthScript.SetHealth(health, maxHealth);
             Destroy(collision.gameObject);
+		}
+
+        if (collision.gameObject.tag.ToLower() == "nextscenetrigger")
+		{
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
 	}
 
