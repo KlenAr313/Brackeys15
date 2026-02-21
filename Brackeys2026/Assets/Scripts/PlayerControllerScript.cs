@@ -23,6 +23,7 @@ public class PlayerControllerScript : MonoBehaviour
     private bool isJumpingLastFrame = false;
 
 	private bool inWater;
+    public bool GetInWater() { return inWater; }
 
     private float verticalVelocity = 0f;
 

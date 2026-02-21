@@ -5,6 +5,7 @@ public class FootsepsManager : MonoBehaviour
 {
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip[] clips;
+    [SerializeField] private AudioClip[] waterClips;
     [SerializeField] float stepInterval = 0.4f;
     private Rigidbody rb;
     private float stepTimer;
@@ -36,9 +37,16 @@ public class FootsepsManager : MonoBehaviour
     public void PlayRandom()
     {
         int index = Random.Range(0, clips.Length);
-
-        source.pitch = Random.Range(0.9f, 1.1f);
-        source.PlayOneShot(clips[index]);
+        if (PlayerControllerScript.Instance.GetInWater())
+        {
+            source.pitch = Random.Range(0.9f, 1.1f);
+            source.PlayOneShot(waterClips[index]);
+        }
+        else
+        {
+            source.pitch = Random.Range(0.9f, 1.1f);
+            source.PlayOneShot(clips[index]);
+        }
     }
 
 }
