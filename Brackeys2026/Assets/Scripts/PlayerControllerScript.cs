@@ -14,6 +14,7 @@ public class PlayerControllerScript : MonoBehaviour
     private int maxHealth;
 	private GameObject centerOfMass;
 	public static PlayerControllerScript Instance;
+    public bool canPunch = true;
 
 	//protected bool canJump;
     private bool isJumping = false;
@@ -93,6 +94,10 @@ public class PlayerControllerScript : MonoBehaviour
 		{
 			spawnPoint = collision.gameObject;
 		}
+        if (collision.gameObject.tag.ToLower() == "healthpack")
+		{
+			
+		}
 	}
 
     private void OnCollisionEnter(Collision collision)
@@ -123,7 +128,7 @@ public class PlayerControllerScript : MonoBehaviour
 
 	public void Punch()
 	{
-        if(Time.timeScale == 0f)
+        if(!canPunch)
         {
             return;
         }

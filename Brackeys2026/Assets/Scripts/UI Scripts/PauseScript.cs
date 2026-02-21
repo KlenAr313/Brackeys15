@@ -19,7 +19,8 @@ public class PauseScript : MonoBehaviour
     private Button exitButton;
     private Slider musicSlider;
     private Slider sfxSlider;
-    private bool paused = false;
+    private Slider sensSlider;
+    public static bool paused = false;
     private bool options = false;
 
     void Start()
@@ -52,6 +53,11 @@ public class PauseScript : MonoBehaviour
                 sfxSlider = pauseDocument.rootVisualElement.Q<Slider>("SFXSlider");
                 sfxSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSFX(evt.newValue); });
                 sfxSlider.value   = AudioManager.Instance.GetSFX();
+
+                //This is disgusting, just remember that
+                sensSlider = pauseDocument.rootVisualElement.Q<Slider>("SensitivitySlider");
+                sensSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSens(evt.newValue); });
+                sensSlider.value   = AudioManager.Instance.GetSens();
             }
         
         }
@@ -93,7 +99,7 @@ public class PauseScript : MonoBehaviour
 
             Time.timeScale = 0f;
             inputHandler.Sensitivity = 0f;
-            inputHandler.Punch = false;
+            PlayerControllerScript.Instance.canPunch = false;
         }
         else
         {
@@ -102,9 +108,11 @@ public class PauseScript : MonoBehaviour
 
             HealthScript.ShowHealth();
 
+            
+
             Time.timeScale = 1f;
-            inputHandler.Sensitivity = inputHandler.OriginalSensitivity;
-            inputHandler.Punch = false;
+            AudioManager.Instance.SetSens(AudioManager.Instance.GetSens());
+            PlayerControllerScript.Instance.canPunch = true;
         }
     }
 

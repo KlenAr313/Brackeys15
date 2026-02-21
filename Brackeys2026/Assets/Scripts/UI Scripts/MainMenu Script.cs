@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     private Button backButton;
     private Slider musicSlider;
     private Slider sfxSlider;
+    private Slider sensSlider;
 
     private bool options = false;
     void Start()
@@ -42,6 +43,10 @@ public class MainMenu : MonoBehaviour
             sfxSlider = document.rootVisualElement.Q<Slider>("SFXSlider");
             sfxSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSFX(evt.newValue); });
             sfxSlider.value = AudioManager.Instance.GetSFX();
+
+            sensSlider = document.rootVisualElement.Q<Slider>("SensitivitySlider");
+            sensSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSens(evt.newValue); });
+            sensSlider.value   = AudioManager.Instance.GetSens();
         }
     }
 
