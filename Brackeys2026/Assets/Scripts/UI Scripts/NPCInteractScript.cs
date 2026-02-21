@@ -111,6 +111,11 @@ public class NPCInteractScript : MonoBehaviour
                 if (triggering)
                 {
                     gameObject.GetComponent<EnemyBase>().Trigger();
+
+                    if(gameObject.TryGetComponent<ThugScript>(out ThugScript thug))
+                    {
+                        thug.GetComponent<ThugScript>().Trigger();
+                    }
                 }
             }
         }

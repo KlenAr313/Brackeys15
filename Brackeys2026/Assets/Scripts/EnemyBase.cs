@@ -29,7 +29,7 @@ public class EnemyBase : MonoBehaviour
     private Vector3 originalPosition;
 
     public bool InCombat { get => inCombat; set => inCombat = value; }
-    public void Trigger() { triggered = true; }
+    public virtual void Trigger() { triggered = true; }
 
     public void TakeDamage(int amount)
     {
