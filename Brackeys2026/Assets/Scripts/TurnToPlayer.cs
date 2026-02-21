@@ -11,6 +11,8 @@ public class TurnToPlayer : MonoBehaviour
     [SerializeField]
     private Sprite smallRatSprite;
     [SerializeField]
+    private Sprite finalRatSprite;
+    [SerializeField]
     private float growUpTime = 1.5f;
     
     private bool isRat = false;
@@ -72,6 +74,14 @@ public class TurnToPlayer : MonoBehaviour
             i += 0.12f;
         }
         growUp();
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = finalRatSprite;
+        
+        EnemyBase enemyBase = this.GetComponent<EnemyBase>();
+            if (enemyBase != null){
+                enemyBase.Trigger();
+            }
     }
 
 }

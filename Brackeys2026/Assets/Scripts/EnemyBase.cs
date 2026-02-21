@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -17,6 +18,9 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private float UpdateInterval = 0.5f;
     [SerializeField] private bool triggered = true;
     [SerializeField] private bool stayTriggered = true;
+
+    private List<GameObject> bloodEffects = new List<GameObject>();
+    private int activeBloodCount = 0;
 
     private SlotManager slotManager;
 
@@ -40,6 +44,18 @@ public class EnemyBase : MonoBehaviour
     public void TakeDamage(int amount)
     {
         health -= amount;
+
+        while (true && activeBloodCount < bloodEffects.Count)
+        {
+            int rndNumber = Random.Range(0, 3);
+            if(bloodEffects[rndNumber].activeSelf == false)
+            {
+                bloodEffects[rndNumber].SetActive(true);
+                activeBloodCount++;
+                break;
+            }
+        }
+
         if (health <= 0)
         {
             Die();
@@ -68,6 +84,15 @@ public class EnemyBase : MonoBehaviour
         damageInterval = Random.Range(2f, 4f);
         slotManager.Enemies.Add(this);
         originalPosition = this.gameObject.transform.position;
+
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("Blood"))
+            {
+                bloodEffects.Add(child.gameObject);
+                child.gameObject.SetActive(false);
+            }
+        }
     }
 
     void Update()
@@ -79,8 +104,7 @@ public class EnemyBase : MonoBehaviour
             damageInterval = Random.Range(2f, 4f);
             if (InCombat && inMelleeRange())
             {
-                animator.PlayAnimation();
-                PlayerControllerScript.Instance.TakeDamage(damage);
+                Attack();
             }
         }
 
@@ -153,5 +177,19 @@ public class EnemyBase : MonoBehaviour
         inCombat = false;
         damageTimer = 0;
         this.gameObject.transform.position = originalPosition;
+    }
+
+    private void Attack()
+    {
+        animator.PlayAnimation();
+        PlayerControllerScript.Instance.TakeDamage(damage);
+
+        foreach (GameObject blood in bloodEffects)
+        {
+            if (blood.activeSelf == true)
+            {
+                blood.GetComponent<CustomAnimator>().PlayAnimation();
+            }
+        }
     }
 }

@@ -89,11 +89,6 @@ public class CameraEffect : MonoBehaviour
             {
                 turnToPlayer.StartGrowUp();
             }
-
-            EnemyBase enemyBase = rat.GetComponent<EnemyBase>();
-            if (enemyBase != null)            {
-                enemyBase.Trigger();
-            }
         }
     }
 }
