@@ -48,11 +48,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FootsepsManager
   source: {fileID: 375003853730030075}
   clips:
-  - {fileID: 8300000, guid: 32ff1256c8e54e84895b9a5a8d89dabe, type: 3}
-  - {fileID: 8300000, guid: 354e718a5be5acb4da7c95a0573769fb, type: 3}
-  - {fileID: 8300000, guid: 851be82aab4245146ad3f984be3715cd, type: 3}
-  - {fileID: 8300000, guid: 0b204d8f3fcd22440b17d63fa9531a1d, type: 3}
-  stepInterval: 0.4
+  - {fileID: 8300000, guid: 2fd9bccfa29eb334ba47708c8181b776, type: 3}
+  - {fileID: 8300000, guid: 341bbde12c638b24994e8d1ae6987042, type: 3}
+  - {fileID: 8300000, guid: 9f99f5d10a18515429a33e6ab12f1e35, type: 3}
+  - {fileID: 8300000, guid: 97cd7f0b39642414595c6846a98691ec, type: 3}
+  waterClips:
+  - {fileID: 8300000, guid: c2080cd0c8423114f85d5570ffc50260, type: 3}
+  - {fileID: 8300000, guid: 1d14d8273d32b5b4693fdd704c22a4df, type: 3}
+  - {fileID: 8300000, guid: e20c92aeef46003469f8a4f94524071f, type: 3}
+  - {fileID: 8300000, guid: 7db1bbf3b224d98409b8765ff3404ce9, type: 3}
+  stepInterval: 0.6
 --- !u!82 &375003853730030075
 AudioSource:
   m_ObjectHideFlags: 0
@@ -166,6 +171,13 @@ MonoBehaviour:
   hitSounds:
   - {fileID: 8300000, guid: f305e7da843c261488f138749d20fc30, type: 3}
   - {fileID: 8300000, guid: aae9db19c1a4a0f48b57545adb44182b, type: 3}
+  - {fileID: 8300000, guid: fc6ed7932814f884b8ffb05b61e32b8d, type: 3}
+  - {fileID: 8300000, guid: acf29b7698c84894f993cd693fd21670, type: 3}
+  getHitSounds:
+  - {fileID: 8300000, guid: f305e7da843c261488f138749d20fc30, type: 3}
+  - {fileID: 8300000, guid: aae9db19c1a4a0f48b57545adb44182b, type: 3}
+  - {fileID: 8300000, guid: fc6ed7932814f884b8ffb05b61e32b8d, type: 3}
+  - {fileID: 8300000, guid: acf29b7698c84894f993cd693fd21670, type: 3}
   missSounds:
   - {fileID: 8300000, guid: a2cd56c04e704554b81e640440fa481c, type: 3}
   - {fileID: 8300000, guid: a05acdb41a7837244a00c9b6abf808c1, type: 3}
