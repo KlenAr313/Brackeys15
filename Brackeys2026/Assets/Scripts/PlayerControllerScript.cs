@@ -186,6 +186,10 @@ public class PlayerControllerScript : MonoBehaviour
 
 				enemy.TakeDamage(damage);
 			}
+            else
+            {
+                CombatSoundScript.Instance.PlayHit();
+            }
         }
         else
         {
