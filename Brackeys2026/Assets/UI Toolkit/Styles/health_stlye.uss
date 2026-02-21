@@ -5,6 +5,7 @@
     justify-content: flex-end;
     bottom: 824px;
     overflow: hidden;
+    left: 50px;
 }
 
 .health-icon {
@@ -13,4 +14,5 @@
     position: absolute;
     justify-content: flex-end;
     background-image: url("project://database/Assets/Images/s%C3%B6r.png?fileID=2800000&guid=2f649b77852852c4a9f409117107ccb2&type=3#sör");
+    left: 50px;
 }

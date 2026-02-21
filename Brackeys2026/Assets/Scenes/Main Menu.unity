@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
   document: {fileID: 1852842452}
-  nextScene: Gergo
+  nextScene: Main
 --- !u!1001 &6212749058686590351
 PrefabInstance:
   m_ObjectHideFlags: 0
