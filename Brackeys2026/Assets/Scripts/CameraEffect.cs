@@ -17,7 +17,7 @@ public class CameraEffect : MonoBehaviour
     [SerializeField]
     private float maxDistortion = 0.7f;
     [SerializeField]
-    private float scalePulse = 0.0f;
+    private float scalePulse = 0.3f;
 
     [SerializeField]
     private float swaySpeed = 4.0f;
@@ -29,6 +29,23 @@ public class CameraEffect : MonoBehaviour
         volume.profile.TryGet(out colorAdjustments);
         volume.profile.TryGet(out lensDistortion);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 1f);
+        Gizmos.DrawIcon(transform.position, "nausea.png", true);
+    }
+
+    private void OnTriggerEnter(Collider collision)
+	{
+        Debug.Log("Collided with " + collision.gameObject.name);
+        if (collision.gameObject.tag.ToLower() == "player")
+		{
+            Debug.Log("Triggering nausea effect");
+			TriggerNausea();
+		}
+	}
 
     public void TriggerNausea()
     {

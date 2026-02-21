@@ -11,6 +11,7 @@ TagManager:
   - Water
   - MainUI
   - SpawnPoint
+  - NauseaTrigger
   layers:
   - Default
   - TransparentFX
