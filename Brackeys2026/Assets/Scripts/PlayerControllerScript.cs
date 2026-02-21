@@ -62,7 +62,7 @@ public class PlayerControllerScript : MonoBehaviour
     // Ground reset
     if (controller.isGrounded && verticalVelocity < 0)
     {
-        verticalVelocity = -2f; // small downward force to keep grounded
+        //verticalVelocity = -2f;
     }
 
     // Apply gravity differently when falling
