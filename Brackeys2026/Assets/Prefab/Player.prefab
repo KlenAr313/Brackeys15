@@ -608,6 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SlotManager
   numberOfSlots: 5
   spaceToPlayer: 1
+  Enemies: []
 --- !u!143 &4176720284814310059
 CharacterController:
   m_ObjectHideFlags: 0
@@ -703,9 +704,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3224093488dac74ea57c52999a5179c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControllerScript
+  controller: {fileID: 0}
   MovementSpeed: 5
   Gravity: -10
   JumpForce: 6
+  spawnPoint: {fileID: 0}
   damage: 50
   health: 100
   verticalVelocity: 0
