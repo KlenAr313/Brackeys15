@@ -186,9 +186,11 @@ public class PlayerControllerScript : MonoBehaviour
 		DeathScript.Die();
     }
 
-    public void Respawn()
+    public void Respawn()   
     {
         controller.enabled = false;
+        // Undifined behavior if spawn point is not set, but it should never be the case.
+        // STUPID, TERRIBLE, NO GOOD SOLUTION TO AVOID UNDEFINED BEHAVIOR, FIX LATER
         this.gameObject.transform.position = spawnPoint.transform.position;
         controller.enabled = true;
         verticalVelocity = 0f;
@@ -201,7 +203,6 @@ public class PlayerControllerScript : MonoBehaviour
             {
                 enemy.Reset();
             }
-                
         }
     }
 }

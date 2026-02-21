@@ -60,8 +60,8 @@ Transform:
   m_GameObject: {fileID: 568355225958456721}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.56, y: -0.52, z: 0.401}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.32, y: -0.34, z: 0.401}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8954151611631174827}
@@ -209,7 +209,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 90
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -307,8 +307,8 @@ Transform:
   m_GameObject: {fileID: 4546081791937548893}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.55, y: -0.47, z: 0.401}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.29, y: -0.32, z: 0.401}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8954151611631174827}
@@ -457,7 +457,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 90
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 1
@@ -664,14 +664,54 @@ MonoBehaviour:
       m_Action: Vertical Direction
       m_Flags: 0
     m_Flags: 0
-  horizontalSpeed:
-    m_Name: Horizontal Speed
+  horizontalDirections:
+    m_Name: Horizontal Directions
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 7015b544-619c-4eae-9592-1dab2a3f6b44
+    m_Id: 035dda4b-7e9f-4ed2-b038-50d5888f1b49
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 7300ad11-bfc9-4284-8e5f-162af537e5fc
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Directions
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 10c1754a-f10d-4c9b-8f68-8699b029ba54
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Directions
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 793cc0cb-791e-4c89-8a13-910a917bd646
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Directions
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 1dbdfa21-24e4-4956-9779-d26fe754453d
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Directions
+      m_Flags: 8
+    - m_Name: right
+      m_Id: d17fdc1b-25fa-4560-9257-8774ce18af02
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Directions
+      m_Flags: 8
     m_Flags: 0
   punchAction:
     m_Name: Punch
@@ -706,7 +746,5 @@ MonoBehaviour:
   MovementSpeed: 5
   Gravity: -10
   JumpForce: 6
-  spawnPoint: {fileID: 0}
   damage: 50
   health: 100
-  verticalVelocity: 0

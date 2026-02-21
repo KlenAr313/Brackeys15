@@ -6,6 +6,7 @@ using System.Diagnostics;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
+    [SerializeField] private string nextScene = "Main";
     private VisualElement mainRoot;
     private VisualElement optionsRoot;
     private Button startButton;
@@ -14,6 +15,7 @@ public class MainMenu : MonoBehaviour
     private Button backButton;
     private Slider musicSlider;
     private Slider sfxSlider;
+
     private bool options = false;
     void Start()
     {
@@ -65,7 +67,7 @@ public class MainMenu : MonoBehaviour
 
     void OnStartClick(ClickEvent evt)
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene(nextScene);
     }
 
     void OnOptionsClick(ClickEvent evt)

@@ -6,9 +6,9 @@ public class InputHandler : EntityControllerScript
 {
 	[SerializeField] private float sensitivity;
 	private float originalSensitivity;
-	private InputAction horizontalDirections;
+	//private InputAction horizontalDirections;
 	[SerializeField] private InputAction verticalDirection;
-	[SerializeField] private InputAction horizontalSpeed;
+	[SerializeField] private InputAction horizontalDirections;
 
 	[SerializeField] private InputAction punchAction;
 
@@ -23,13 +23,19 @@ public class InputHandler : EntityControllerScript
     private new void Start()
     {
 		base.Start();
-		horizontalDirections = InputSystem.actions.FindAction("Move");
+
+		//horizontalDirections = InputSystem.actions.FindAction("Move");
 		OriginalSensitivity = sensitivity;
 		cameraParentTransform = GameObject.Find("Camera").transform;
 
-		horizontalDirections.Enable();
+		if(horizontalDirections != null)
+		{
+			horizontalDirections.Enable();
+		}
 		verticalDirection.Enable();
 		punchAction.Enable();
+
+		PlayerControllerScript.Instance.controller.enabled = true;
 	}
 
     private void OnEnable()
@@ -51,6 +57,8 @@ public class InputHandler : EntityControllerScript
 
 	private void Update()
 	{
+		PlayerControllerScript.Instance.controller.enabled = true;
+
 		direction = Vector2Rotate(horizontalDirections.ReadValue<Vector2>(), -cameraParentTransform.localEulerAngles.y);
 		if(jump = verticalDirection.WasPressedThisFrame())
 		{
@@ -68,11 +76,9 @@ public class InputHandler : EntityControllerScript
 
 		PlayerControllerScript.Instance.Move(direction);
 
-
 		if(punchAction.triggered)
 		{
 			PlayerControllerScript.Instance.Punch();
 		}
 	}
-
 }

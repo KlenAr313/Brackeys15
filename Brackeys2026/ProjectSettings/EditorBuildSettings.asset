@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 5e930939bbf5f8b4fb31f81c37f17435
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 078912f6c7834114aba1f0445d1f1d59
+  - enabled: 1
+    path: Assets/Scenes/Gergo.unity
+    guid: 1b94391e0cf080740b077423404108d1
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c386e351ca487fd4992a18cc5494be6e, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
