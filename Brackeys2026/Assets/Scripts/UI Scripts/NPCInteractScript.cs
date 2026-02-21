@@ -30,7 +30,6 @@ public class NPCInteractScript : MonoBehaviour
 
     void Start()
     {
-        // MAKE PLAYER BEFORE
         player = GameObject.FindGameObjectWithTag("Player").transform;
         
         if (document != null)
@@ -62,9 +61,6 @@ public class NPCInteractScript : MonoBehaviour
                     pressed = true;
             }
         }
-
-        // DEBUG (SANTER) CLAUSE UNTIL NPCS ARE IMPLEMENTED NORMALLY
-        //playerInRange = true;
 
         if (playerInRange && pressed)
         {
