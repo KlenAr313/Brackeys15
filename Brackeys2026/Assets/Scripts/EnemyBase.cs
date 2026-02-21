@@ -53,6 +53,8 @@ public class EnemyBase : MonoBehaviour
             slotManager.ResetSlot(this.currentSlot);
             slotManager.Enemies.Remove(this);
         }
+
+        CombatSoundScript.Instance.PlayDeath(gameObject);
         
         Destroy(gameObject);
     }

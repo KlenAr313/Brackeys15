@@ -25,6 +25,7 @@ public class PlayerControllerScript : MonoBehaviour
 
 	private bool inWater;
 	private int waterDebuffTimer;
+    public bool GetInWater() { return inWater; }
 
     private float verticalVelocity = 0f;
 
@@ -188,13 +189,20 @@ public class PlayerControllerScript : MonoBehaviour
 			{
 				EnemyBase enemy = hit.collider.GetComponent<EnemyBase>();
 
+                CombatSoundScript.Instance.PlayHit();
+
 				enemy.TakeDamage(damage);
 			}
+        }
+        else
+        {
+            CombatSoundScript.Instance.PlayMiss();
         }
 	}
 
 	public void TakeDamage(int amount)
     {
+        CombatSoundScript.Instance.PlayGetHit();
         health -= amount;
         HealthScript.SetHealth(health, maxHealth);
         if (health <= 0)
