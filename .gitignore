@@ -41,6 +41,8 @@
 *.pdb
 *.opendb
 *.VC.db
+*.zip
+*.rar
 
 # --- Build Artifacts ---
 **/[Bb]in/
