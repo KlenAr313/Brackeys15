@@ -65,7 +65,7 @@ public class MainMenu : MonoBehaviour
 
     void OnStartClick(ClickEvent evt)
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Gergo");
     }
 
     void OnOptionsClick(ClickEvent evt)
