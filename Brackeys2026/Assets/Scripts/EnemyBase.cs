@@ -7,6 +7,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private int health = 100;
     [SerializeField] private int damage = 5;
     [SerializeField] private float damageInterval = 3;
+    [SerializeField] private float attackRange = 1f;
 
     [SerializeField] private Transform player;
     [SerializeField] private UnityEngine.AI.NavMeshAgent agent;
@@ -66,7 +67,7 @@ public class EnemyBase : MonoBehaviour
         {
             damageTimer = 0;
             damageInterval = Random.Range(2f, 4f);
-            if (InCombat)
+            if (InCombat && inMelleeRange())
             {
                 PlayerControllerScript.Instance.TakeDamage(damage);
             }
@@ -123,6 +124,16 @@ public class EnemyBase : MonoBehaviour
             return false;
 
         return true;
+    }
+
+    bool inMelleeRange()
+    {
+        Vector3 directionToPlayer = player.position - transform.position;
+        if (Physics.Raycast(gameObject.transform.position, directionToPlayer, out RaycastHit hit, attackRange))
+        {
+			return true;
+        }
+        return false;
     }
 
     public void Reset()
