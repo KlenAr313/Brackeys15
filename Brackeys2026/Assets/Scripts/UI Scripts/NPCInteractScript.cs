@@ -32,6 +32,7 @@ public class NPCInteractScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        document = gameObject.GetComponent<UIDocument>();
         
         if (document != null)
         {

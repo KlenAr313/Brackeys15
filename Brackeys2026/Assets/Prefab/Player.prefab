@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7098347578578020610}
+  - component: {fileID: 2942916087381377257}
   m_Layer: 11
   m_Name: Camera
   m_TagString: Untagged
@@ -33,6 +34,27 @@ Transform:
   - {fileID: 8954151611631174827}
   m_Father: {fileID: 3616609234826791449}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2942916087381377257
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464105408028660728}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &568355225958456721
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,4 +770,5 @@ MonoBehaviour:
   JumpForce: 6
   damage: 50
   health: 100
+  hpGain: 30
   canPunch: 1
