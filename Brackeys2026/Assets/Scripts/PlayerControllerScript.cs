@@ -181,8 +181,14 @@ public class PlayerControllerScript : MonoBehaviour
 			{
 				EnemyBase enemy = hit.collider.GetComponent<EnemyBase>();
 
+                CombatSoundScript.Instance.PlayHit();
+
 				enemy.TakeDamage(damage);
 			}
+        }
+        else
+        {
+            CombatSoundScript.Instance.PlayMiss();
         }
 	}
 
