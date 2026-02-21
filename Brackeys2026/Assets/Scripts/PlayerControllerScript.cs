@@ -8,7 +8,7 @@ public class PlayerControllerScript : MonoBehaviour
     public float Gravity = 1f;
     public float JumpForce = 10;
 
-    [SerializeField] private GameObject spawnPoint;
+    private GameObject spawnPoint;
     [SerializeField] private int damage = 10;
 	[SerializeField] private int health = 100;
     private int maxHealth;
@@ -21,7 +21,7 @@ public class PlayerControllerScript : MonoBehaviour
 
 	private bool inWater;
 
-    [SerializeField]private float verticalVelocity = 0f;
+    private float verticalVelocity = 0f;
 
      void Start()
     {
@@ -39,6 +39,7 @@ public class PlayerControllerScript : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         centerOfMass = GameObject.Find("Camera");
+        controller.enabled = true;
     }
 
     void Update()
@@ -122,6 +123,10 @@ public class PlayerControllerScript : MonoBehaviour
 
 	public void Punch()
 	{
+        if(Time.timeScale == 0f)
+        {
+            return;
+        }
 
         int rnd = Random.Range(0, 4);
         string fistName = null;
