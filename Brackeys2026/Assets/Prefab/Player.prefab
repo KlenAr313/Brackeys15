@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 568355225958456721}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.41, y: -0.469, z: 0.401}
+  m_LocalPosition: {x: -0.56, y: -0.52, z: 0.401}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -115,12 +115,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: bdbe1911eaee43248bdd1d7d78daafa8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 370fef533a744d14493e14308bfe7df2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.66, y: 0.89}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -139,9 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomAnimator
   animationName: punch
   animations:
-  - {fileID: 21300000, guid: 5f8502ec34f621b4696074f772a43c31, type: 3}
-  - {fileID: 21300000, guid: 0df513350d6050141ab8c477e62bd33d, type: 3}
-  fps: 10
+  - {fileID: 21300000, guid: dd43f0681f2325344a4e9e214978796a, type: 3}
+  fps: 5
   isLooping: 0
 --- !u!1 &1855189284941367567
 GameObject:
@@ -293,7 +292,7 @@ GameObject:
   - component: {fileID: 5043981905014488521}
   - component: {fileID: 2935214190495858716}
   m_Layer: 28
-  m_Name: Fists
+  m_Name: RFist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,7 +307,7 @@ Transform:
   m_GameObject: {fileID: 4546081791937548893}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.511, y: -0.341, z: 0.401}
+  m_LocalPosition: {x: 0.55, y: -0.47, z: 0.401}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -363,12 +362,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: c77da25e598490048a15a47d028d691f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7a68e259e4607846913db2513c8332c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.71, y: 0.83}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -387,9 +386,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomAnimator
   animationName: punch
   animations:
-  - {fileID: 21300000, guid: c77da25e598490048a15a47d028d691f, type: 3}
-  - {fileID: 21300000, guid: c77da25e598490048a15a47d028d691f, type: 3}
-  fps: 10
+  - {fileID: 21300000, guid: 7cbe5b1dd84a2004cbb5e40384e41498, type: 3}
+  fps: 5
   isLooping: 0
 --- !u!1 &7948510615292102241
 GameObject:
@@ -552,7 +550,7 @@ Transform:
   m_GameObject: {fileID: 8920819311908738020}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.055, z: 0}
+  m_LocalPosition: {x: -1.6804408, y: 1.3, z: -3.5220265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -608,6 +606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SlotManager
   numberOfSlots: 5
   spaceToPlayer: 1
+  Enemies: []
 --- !u!143 &4176720284814310059
 CharacterController:
   m_ObjectHideFlags: 0
@@ -703,9 +702,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3224093488dac74ea57c52999a5179c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControllerScript
+  controller: {fileID: 0}
   MovementSpeed: 5
   Gravity: -10
   JumpForce: 6
+  spawnPoint: {fileID: 0}
   damage: 50
   health: 100
   verticalVelocity: 0
