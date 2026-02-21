@@ -195,6 +195,7 @@ public class PlayerControllerScript : MonoBehaviour
 
 	public void TakeDamage(int amount)
     {
+        CombatSoundScript.Instance.PlayGetHit();
         health -= amount;
         HealthScript.SetHealth(health, maxHealth);
         if (health <= 0)

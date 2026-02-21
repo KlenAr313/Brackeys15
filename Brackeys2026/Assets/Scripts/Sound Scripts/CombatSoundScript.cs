@@ -5,6 +5,7 @@ public class CombatSoundScript : MonoBehaviour
 {
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip[] hitSounds;
+    [SerializeField] private AudioClip[] getHitSounds;
     [SerializeField] private AudioClip[] missSounds;
     [SerializeField] private AudioClip[] deathSounds;
     [SerializeField] private AudioMixer mixer;
@@ -25,6 +26,11 @@ public class CombatSoundScript : MonoBehaviour
     public void PlayHit()
     {
         PlayRandom(hitSounds);
+    }
+    
+    public void PlayGetHit()
+    {
+        PlayRandom(getHitSounds);
     }
 
     public void PlayMiss()
