@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerScript : MonoBehaviour
 {
@@ -73,7 +74,7 @@ public class PlayerControllerScript : MonoBehaviour
     // Ground reset
     if (controller.isGrounded && verticalVelocity < 0)
     {
-        verticalVelocity = -2f; // small downward force to keep grounded
+        //verticalVelocity = -2f;
     }
 
     // Apply gravity differently when falling
@@ -120,6 +121,10 @@ public class PlayerControllerScript : MonoBehaviour
 		{
 			inWater = true;
 			waterDebuffTimer = 400;
+    }
+    if (collision.gameObject.tag.ToLower() == "nextscenetrigger")
+		{
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
 	}
 

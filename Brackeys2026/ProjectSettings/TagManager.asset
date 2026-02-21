@@ -13,6 +13,7 @@ TagManager:
   - SpawnPoint
   - NauseaTrigger
   - HealthPickup
+  - NextSceneTrigger
   layers:
   - Default
   - TransparentFX

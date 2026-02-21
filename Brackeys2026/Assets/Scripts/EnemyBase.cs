@@ -21,6 +21,7 @@ public class EnemyBase : MonoBehaviour
     private SlotManager slotManager;
 
     public GameObject currentSlot;
+    private CustomAnimator animator;
 
     private bool inCombat = false;
 
@@ -28,7 +29,13 @@ public class EnemyBase : MonoBehaviour
     private Vector3 originalPosition;
 
     public bool InCombat { get => inCombat; set => inCombat = value; }
-    public void Trigger() { triggered = true; }
+    public virtual void Trigger() { triggered = true; }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1f, 0f, 0f, 0.3f);
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
 
     public void TakeDamage(int amount)
     {
@@ -55,6 +62,7 @@ public class EnemyBase : MonoBehaviour
         slotManager = FindFirstObjectByType<SlotManager>();
         player = GameObject.Find("Player").transform;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        animator = GetComponentInChildren<CustomAnimator>();
         damageInterval = Random.Range(2f, 4f);
         slotManager.Enemies.Add(this);
         originalPosition = this.gameObject.transform.position;
@@ -69,6 +77,7 @@ public class EnemyBase : MonoBehaviour
             damageInterval = Random.Range(2f, 4f);
             if (InCombat && inMelleeRange())
             {
+                animator.PlayAnimation();
                 PlayerControllerScript.Instance.TakeDamage(damage);
             }
         }

@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 public class NPCInteractScript : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
-    [SerializeField] private float dialogueSpeed;
+    [SerializeField] private float dialogueSpeed = 0.2f;
     [SerializeField] private string characterName;
     [SerializeField] private string[] sentences;
     [SerializeField] private bool triggering = false;
@@ -32,6 +32,7 @@ public class NPCInteractScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        document = gameObject.GetComponent<UIDocument>();
         
         if (document != null)
         {
@@ -110,6 +111,11 @@ public class NPCInteractScript : MonoBehaviour
                 if (triggering)
                 {
                     gameObject.GetComponent<EnemyBase>().Trigger();
+
+                    if(gameObject.TryGetComponent<ThugScript>(out ThugScript thug))
+                    {
+                        thug.GetComponent<ThugScript>().Trigger();
+                    }
                 }
             }
         }

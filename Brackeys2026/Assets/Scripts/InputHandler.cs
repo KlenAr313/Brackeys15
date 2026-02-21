@@ -20,9 +20,8 @@ public class InputHandler : EntityControllerScript
     public float Sensitivity { get => sensitivity; set => sensitivity = value; }
     public float OriginalSensitivity { get => originalSensitivity; set => originalSensitivity = value; }
 
-    private new void Start()
+    private void Start()
     {
-		base.Start();
 
 		//horizontalDirections = InputSystem.actions.FindAction("Move");
 		//OriginalSensitivity = sensitivity;

@@ -44,6 +44,7 @@ public class CameraEffect : MonoBehaviour
         if (collision.gameObject.tag.ToLower() == "player")
 		{
 			TriggerNausea();
+            TrigerRat();
 		}
 	}
 
@@ -76,5 +77,23 @@ public class CameraEffect : MonoBehaviour
         lensDistortion.intensity.value = 0;
         lensDistortion.scale.value = 1.0f;
         transform.localRotation = Quaternion.identity;
+    }
+
+    private void TrigerRat()
+    {
+        GameObject[] rats = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject rat in rats)
+        {
+            TurnToPlayer turnToPlayer = rat.GetComponent<TurnToPlayer>();
+            if (turnToPlayer != null)
+            {
+                turnToPlayer.StartGrowUp();
+            }
+
+            EnemyBase enemyBase = rat.GetComponent<EnemyBase>();
+            if (enemyBase != null)            {
+                enemyBase.Trigger();
+            }
+        }
     }
 }
