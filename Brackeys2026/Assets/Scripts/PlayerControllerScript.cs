@@ -62,7 +62,6 @@ public class PlayerControllerScript : MonoBehaviour
 		{
 			waterDebuffTimer--;
 		}
-		Debug.Log(waterDebuffTimer);
     }
 
     public void Move(Vector2 movementVector)
@@ -127,7 +126,7 @@ public class PlayerControllerScript : MonoBehaviour
 		if (collision.gameObject.tag.ToLower() == "water")
 		{
 			inWater = true;
-			waterDebuffTimer = 600;
+			waterDebuffTimer = 400;
 		}
 	}
 
@@ -145,11 +144,6 @@ public class PlayerControllerScript : MonoBehaviour
         {
             //canJump = false;
         }
-
-		if (collision.gameObject.tag == "Water")
-		{
-			inWater = false;
-		}
 	}
 
 	public void Punch()
