@@ -24,6 +24,7 @@ public class PlayerControllerScript : MonoBehaviour
     private bool isJumpingLastFrame = false;
 
 	private bool inWater;
+    private int waterDebuffTimer;
     public bool GetInWater() { return inWater; }
 
     private float verticalVelocity = 0f;
@@ -45,11 +46,23 @@ public class PlayerControllerScript : MonoBehaviour
 
         centerOfMass = GameObject.Find("Camera");
         controller.enabled = true;
+
+		waterDebuffTimer = 0;
+		inWater = false;
     }
 
     void Update()
     {
         isJumpingLastFrame = isJumping;
+		if (waterDebuffTimer <= 0)
+		{
+			inWater = false;
+		}
+		else
+		{
+			waterDebuffTimer--;
+		}
+		Debug.Log(waterDebuffTimer);
     }
 
     public void Move(Vector2 movementVector)
@@ -58,7 +71,7 @@ public class PlayerControllerScript : MonoBehaviour
     move *= MovementSpeed * Time.deltaTime;
 
     if (inWater)
-        move *= 0.4f;
+        move *= 0.2f;
 
     // Ground reset
     if (controller.isGrounded && verticalVelocity < 0)
@@ -110,6 +123,12 @@ public class PlayerControllerScript : MonoBehaviour
 		{
             collision.GetComponent<NextSceneScript>().ChangeScene();
 		}
+        
+		if (collision.gameObject.tag.ToLower() == "water")
+		{
+			inWater = true;
+			waterDebuffTimer = 300;
+		}
 	}
 
     private void OnCollisionEnter(Collision collision)
@@ -118,11 +137,6 @@ public class PlayerControllerScript : MonoBehaviour
         {
             //canJump = true;
         }
-		
-		if (collision.gameObject.tag == "Water")
-		{
-			inWater = true;
-		}
 	}
 
 	private void OnCollisionExit(Collision collision)
