@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCInteractScript
   document: {fileID: 918605319053792049}
-  dialogueSpeed: 3
+  dialogueSpeed: 0.2
   characterName: Name
   sentences:
   - Sentence 1

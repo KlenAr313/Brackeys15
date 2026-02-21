@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 public class NPCInteractScript : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
-    [SerializeField] private float dialogueSpeed;
+    [SerializeField] private float dialogueSpeed = 0.2f;
     [SerializeField] private string characterName;
     [SerializeField] private string[] sentences;
     [SerializeField] private bool triggering = false;
