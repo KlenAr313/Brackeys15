@@ -11,12 +11,9 @@ GameObject:
   - component: {fileID: 2009566106175400699}
   - component: {fileID: 4225265419361154334}
   - component: {fileID: 6483679361741543570}
-  - component: {fileID: 2414840960621517058}
   - component: {fileID: 9106377554101559502}
-  - component: {fileID: 4824835603657039836}
-  - component: {fileID: 918605319053792049}
   m_Layer: 11
-  m_Name: Interactable NPC
+  m_Name: Bar NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,23 +71,6 @@ MonoBehaviour:
   bigRatSprite: {fileID: 0}
   smallRatSprite: {fileID: 0}
   growUpTime: 1.5
---- !u!114 &2414840960621517058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3773247448988033611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c52c13690555b74693eb1e83772c2f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CustomAnimator
-  animationName: punch
-  animations:
-  - {fileID: 21300000, guid: 95b0e975773bc744ca0ee7daba4e788d, type: 3}
-  fps: 5
-  isLooping: 0
 --- !u!212 &9106377554101559502
 SpriteRenderer:
   serializedVersion: 2
@@ -150,49 +130,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &4824835603657039836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3773247448988033611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e67316361e08fb3408c84d3575a32e00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCInteractScript
-  document: {fileID: 918605319053792049}
-  dialogueSpeed: 0.2
-  characterName: Name
-  sentences:
-  - Sentence 1
-  - Sentence 2
-  triggering: 0
-  interactionRange: 2
-  interactionKey: 101
-  frequency: 0.2
-  wob: 8
---- !u!114 &918605319053792049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3773247448988033611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
-  m_PanelSettings: {fileID: 11400000, guid: 0080e3e41ea617643ab6d216db7a3701, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 9f0925fb2ba8c1446af76f2663d30f6a, type: 3}
-  m_SortingOrder: 0
-  m_Position: 0
-  m_WorldSpaceSizeMode: 1
-  m_WorldSpaceWidth: 1920
-  m_WorldSpaceHeight: 1080
-  m_PivotReferenceSize: 0
-  m_Pivot: 0
-  m_WorldSpaceCollider: {fileID: 0}

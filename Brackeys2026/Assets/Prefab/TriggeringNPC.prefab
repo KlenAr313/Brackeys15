@@ -170,6 +170,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 0}
+  bigRatSprite: {fileID: 0}
+  smallRatSprite: {fileID: 0}
+  growUpTime: 1.5
 --- !u!195 &5380427009700025572
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -230,11 +233,7 @@ MonoBehaviour:
   document: {fileID: 0}
   dialogueSpeed: 0.1
   characterName: dawd
-  sentences:
-  - dwae
-  - rgwwvdcew
-  - bhtehh4eg
-  - vevev
+  sentences: []
   triggering: 1
   interactionRange: 2
   interactionKey: 101

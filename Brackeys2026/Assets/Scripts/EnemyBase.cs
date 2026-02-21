@@ -39,6 +39,10 @@ public class EnemyBase : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (!triggered)
+        {
+            return;
+        }
         health -= amount;
         if (health <= 0)
         {
