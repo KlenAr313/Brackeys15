@@ -31702,6 +31702,8 @@ PrefabInstance:
     - target: {fileID: -9115133765131439589, guid: ecfea581fd1b7944c84b2f5722b447ee, type: 3}
       propertyPath: dialogueSpeed
       value: 0.05
+      propertyPath: dialogueSpeed
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -334899070142269749, guid: ecfea581fd1b7944c84b2f5722b447ee, type: 3}
       propertyPath: m_Radius
