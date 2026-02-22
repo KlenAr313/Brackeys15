@@ -3887,6 +3887,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3825698100543972054, guid: 40a8346d64a5c374f858a337a53b3e04, type: 3}
+      propertyPath: isRestart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3825698100543972054, guid: 40a8346d64a5c374f858a337a53b3e04, type: 3}
       propertyPath: spawnPosition.x
       value: 15
       objectReference: {fileID: 0}
