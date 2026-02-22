@@ -15,7 +15,7 @@ public class FootsepsManager : MonoBehaviour
 
         bool grounded = GameObject.Find("Player").GetComponent<CharacterController>().isGrounded;
 
-        if (PlayerControllerScript.Instance.controller.velocity.magnitude > 1.5f && grounded)
+        if (PlayerControllerScript.Instance.controller.velocity.magnitude > 4.5f && grounded)
         {
 
             if (stepTimer <= 0)

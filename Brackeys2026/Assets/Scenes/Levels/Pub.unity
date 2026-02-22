@@ -60037,10 +60037,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -6220360661550948309, guid: 562d565823c1d954c9ea984f1604d5a9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 2e3ab8eebac5628439cd0db8c4d09e51, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
