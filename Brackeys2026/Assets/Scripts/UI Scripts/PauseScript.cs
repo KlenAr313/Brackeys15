@@ -59,7 +59,6 @@ public class PauseScript : MonoBehaviour
                 sensSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSens(evt.newValue); });
                 sensSlider.value   = AudioManager.Instance.GetSens();
             }
-        
         }
     }
 
@@ -98,7 +97,8 @@ public class PauseScript : MonoBehaviour
             HealthScript.HideHealth();
 
             UnityEngine.Cursor.visible = true;
-            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+            pauseDocument.rootVisualElement.pickingMode = PickingMode.Position;
 
             Time.timeScale = 0f;
             inputHandler.Sensitivity = 0f;
