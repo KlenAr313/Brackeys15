@@ -6707,6 +6707,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4322013450740637748, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
+      propertyPath: health
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4322013450740637748, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
       propertyPath: damageInterval
       value: 2
       objectReference: {fileID: 0}
@@ -31242,6 +31246,10 @@ PrefabInstance:
     - target: {fileID: 3773247448988033611, guid: ecfea581fd1b7944c84b2f5722b447ee, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4322013450740637748, guid: ecfea581fd1b7944c84b2f5722b447ee, type: 3}
+      propertyPath: health
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4322013450740637748, guid: ecfea581fd1b7944c84b2f5722b447ee, type: 3}
       propertyPath: damageInterval
