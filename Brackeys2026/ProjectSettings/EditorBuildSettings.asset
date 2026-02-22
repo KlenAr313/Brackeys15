@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Pub.unity
     guid: 19bd2de9e9b0dad4488e48d542b35665
   - enabled: 1
-    path: Assets/Scenes/Sewer.unity
+    path: Assets/Scenes/Levels/Sewer.unity
     guid: 8f33f887d398e3141b5076f818394ea4
   - enabled: 1
     path: Assets/Scenes/Levels/Hobo Palace.unity
