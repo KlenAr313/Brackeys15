@@ -22,8 +22,22 @@ public class PauseScript : MonoBehaviour
     private Slider sensSlider;
     public static bool paused = false;
     private bool options = false;
+    public static PauseScript Instance;
+    public bool canPause = true;
 
     void Start()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    void OnEnable()
     {
         if (pauseDocument != null)
         {
@@ -59,6 +73,7 @@ public class PauseScript : MonoBehaviour
                 sensSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSens(evt.newValue); });
                 sensSlider.value   = AudioManager.Instance.GetSens();
             }
+            canPause = true;
         }
     }
 
@@ -70,7 +85,8 @@ public class PauseScript : MonoBehaviour
             if (System.Enum.TryParse<Key>(interactionKey.ToString(), out parsedKey))
             {
                 KeyControl keyControl = Keyboard.current[parsedKey];
-                if (keyControl != null && keyControl.wasPressedThisFrame)
+                if (keyControl != null && keyControl.wasPressedThisFrame && canPause)
+                {
                     if (!options)
                     {
                         TogglePause();
@@ -79,7 +95,7 @@ public class PauseScript : MonoBehaviour
                     {
                         ToggleOptions();
                     }
-                    
+                }
             }
         }
     }
@@ -97,7 +113,7 @@ public class PauseScript : MonoBehaviour
             HealthScript.HideHealth();
 
             UnityEngine.Cursor.visible = true;
-            UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
             pauseDocument.rootVisualElement.pickingMode = PickingMode.Position;
 
             Time.timeScale = 0f;
@@ -113,6 +129,7 @@ public class PauseScript : MonoBehaviour
 
             UnityEngine.Cursor.visible = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            pauseDocument.rootVisualElement.pickingMode = PickingMode.Ignore;
 
             Time.timeScale = 1f;
             AudioManager.Instance.SetSens(AudioManager.Instance.GetSens());
