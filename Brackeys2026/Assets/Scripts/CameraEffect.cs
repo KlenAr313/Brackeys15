@@ -26,6 +26,7 @@ public class CameraEffect : MonoBehaviour
     private float swaySpeed = 4.0f;
     [SerializeField]
     private float swayAmount = 6.0f;
+    private bool hadNausea = false;
 
     void Start() {
         volume = FindFirstObjectByType<Volume>();
@@ -42,8 +43,9 @@ public class CameraEffect : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
 	{
-        if (collision.gameObject.tag.ToLower() == "player")
+        if (collision.gameObject.tag.ToLower() == "player" && !hadNausea)
 		{
+            hadNausea = true;
 			TriggerNausea();
             TrigerRat();
 		}
