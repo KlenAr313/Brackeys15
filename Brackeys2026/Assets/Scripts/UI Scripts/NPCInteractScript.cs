@@ -73,6 +73,14 @@ public class NPCInteractScript : MonoBehaviour
                 {
                     Destroy(child.gameObject);
                 }
+                else
+                {
+                    child = transform.Find("QueMark");
+                    if(child != null)
+                    {
+                        Destroy(child.gameObject);
+                    }
+                }
                 ShowDialogue();
             }
             NextSentence();

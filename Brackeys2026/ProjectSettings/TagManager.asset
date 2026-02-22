@@ -14,6 +14,7 @@ TagManager:
   - NauseaTrigger
   - HealthPickup
   - NextSceneTrigger
+  - DeathTrigger
   - Blood
   layers:
   - Default
