@@ -7,7 +7,6 @@ public class DeathScript : MonoBehaviour
     [SerializeField] private UIDocument document;
     private static UIDocument deathDocument;
     static InputHandler inputHandler;
-    static PlayerControllerScript playerControllerScript;
     static VisualElement deathRoot;
     Button respawnButton;
     Button exitButton;
@@ -33,6 +32,10 @@ public class DeathScript : MonoBehaviour
 
         HealthScript.HideHealth();
 
+        PauseScript.Instance.canPause = false;
+
+        deathRoot.pickingMode = PickingMode.Position;
+
         UnityEngine.Cursor.visible = true;
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         deathDocument.rootVisualElement.pickingMode = PickingMode.Position;
@@ -49,6 +52,13 @@ public class DeathScript : MonoBehaviour
         deathRoot.style.display = DisplayStyle.None;
 
         HealthScript.ShowHealth();
+
+        PauseScript.Instance.canPause = true;
+
+        deathRoot.pickingMode = PickingMode.Ignore;
+
+        UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
         Time.timeScale = 1f;
         inputHandler.Sensitivity = inputHandler.OriginalSensitivity;
