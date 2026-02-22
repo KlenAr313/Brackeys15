@@ -13,9 +13,6 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private UnityEngine.AI.NavMeshAgent agent;
     [SerializeField] private float detectionRange = 10f;
-
-    private float timer = 0;
-    [SerializeField] private float UpdateInterval = 0.5f;
     [SerializeField] private bool triggered = true;
     [SerializeField] private bool stayTriggered = true;
 
@@ -113,14 +110,6 @@ public class EnemyBase : MonoBehaviour
 
     void Movement()
     {
-        if(timer < UpdateInterval)
-        {
-            timer += Time.deltaTime;
-            return;
-        }
-
-        timer = 0;
-
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer < detectionRange && currentSlot == null && triggered && seesPlayer())
         {
