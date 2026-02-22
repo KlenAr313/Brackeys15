@@ -68,6 +68,11 @@ public class NPCInteractScript : MonoBehaviour
         {
             if (dialogueActive != true)
             {
+                Transform child = transform.Find("ExcMark");
+                if (child != null)
+                {
+                    Destroy(child.gameObject);
+                }
                 ShowDialogue();
             }
             NextSentence();
