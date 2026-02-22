@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 public class EnemyBase : MonoBehaviour
 {
-    [SerializeField] private int health = 100;
+    [SerializeField] protected int health = 100;
     [SerializeField] private int damage = 5;
     [SerializeField] private float damageInterval = 3;
     [SerializeField] private float attackRange = 1f;
@@ -15,6 +15,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private float detectionRange = 10f;
     [SerializeField] private bool triggered = true;
     [SerializeField] private bool stayTriggered = true;
+
+    public bool canInteract = true;
 
     private List<GameObject> bloodEffects = new List<GameObject>();
     private int activeBloodCount = 0;
@@ -44,6 +46,12 @@ public class EnemyBase : MonoBehaviour
         {
             return;
         }
+
+        if (!canInteract)
+        {
+            return;
+        }
+
         health -= amount;
 
         while (true && activeBloodCount < bloodEffects.Count)
@@ -63,7 +71,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         if(this.currentSlot != null)
         {
@@ -76,7 +84,7 @@ public class EnemyBase : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void Start()
+    protected void Start()
     {
         slotManager = FindFirstObjectByType<SlotManager>();
         player = GameObject.Find("Player").transform;

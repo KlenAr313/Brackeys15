@@ -28,6 +28,7 @@ public class NPCInteractScript : MonoBehaviour
     private bool doneWriting = true;
     private Coroutine writingCoroutine;
     
+    public bool didInteract = false;
 
     void Start()
     {
@@ -94,10 +95,12 @@ public class NPCInteractScript : MonoBehaviour
     void HideDialogue()
     {
         dialogueActive = false;
+        didInteract = true;
         
         if (dialogueRoot != null || nameLabel != null)
             dialogueRoot.style.display = DisplayStyle.None;
             nameLabel.style.display = DisplayStyle.None;
+
     }
 
     void NextSentence()
