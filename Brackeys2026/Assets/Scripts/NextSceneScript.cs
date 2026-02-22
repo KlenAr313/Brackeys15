@@ -10,14 +10,17 @@ public class NextSceneScript : MonoBehaviour
     [SerializeField] private bool isRestart = false;
     public void ChangeScene()
     {
-        if (isRestart)
-        {
-            //SceneManager.LoadScene();
-        }
-
         PlayerControllerScript.Instance.transform.position = spawnPosition;
         PlayerControllerScript.Instance.transform.rotation = spawnRotation;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        if (isRestart)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private void OnDrawGizmos()
