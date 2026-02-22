@@ -44,16 +44,20 @@ public class SlotManager : MonoBehaviour
     
     public GameObject GetAvailabeClosestSlot(Vector3 npcPosition)
     {
+        //Debug.Log("Giving Slot");
         GameObject closestSlot = null;
         float closestDistance = Mathf.Infinity;
 
         foreach (var slot in slotStatus)
         {
+            //Debug.Log(1);
             if (slot.Value) // If the slot is available
             {
+                Debug.Log(2);
                 float distance = Vector3.Distance(npcPosition, slot.Key.transform.position);
                 if (distance < closestDistance)
                 {
+                    Debug.Log(3);
                     closestDistance = distance;
                     closestSlot = slot.Key;
                 }
@@ -62,6 +66,8 @@ public class SlotManager : MonoBehaviour
 
         if (closestSlot != null)
             slotStatus[closestSlot] = false;
+
+        Debug.Log("Closest Slot: " + closestSlot);
         return closestSlot;
     }
 

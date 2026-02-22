@@ -125,7 +125,7 @@ public class EnemyBase : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer < detectionRange && currentSlot == null && triggered && seesPlayer())
         {
-
+            Debug.Log("2");
             currentSlot = slotManager.GetAvailabeClosestSlot(transform.position);
             if (currentSlot != null)
             {
@@ -135,6 +135,7 @@ public class EnemyBase : MonoBehaviour
         }
         else if (distanceToPlayer >= detectionRange && triggered && currentSlot != null)
         {
+            Debug.Log("3");
             agent.SetDestination(transform.position);
             slotManager.ResetSlot(currentSlot);
             currentSlot = null;
@@ -145,6 +146,7 @@ public class EnemyBase : MonoBehaviour
 
         if (triggered && currentSlot != null)
         {
+            Debug.Log("4");
             agent.SetDestination(currentSlot.transform.position);
             inCombat = true;
         }

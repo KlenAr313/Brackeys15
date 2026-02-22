@@ -4,6 +4,8 @@ public class HoboKingScript : MonoBehaviour
 {
     [SerializeField] ThugScript thug1;
     [SerializeField] ThugScript thug2;
+    [SerializeField] GameObject door;
+    [SerializeField] GameObject nextSceneTrigger;
 
     private NPCInteractScript npcInteractScript;
 
@@ -26,6 +28,7 @@ public class HoboKingScript : MonoBehaviour
 
     public void QuestComplete()
     {
-        
+        door.SetActive(false);
+        nextSceneTrigger.SetActive(true);
     }
 }

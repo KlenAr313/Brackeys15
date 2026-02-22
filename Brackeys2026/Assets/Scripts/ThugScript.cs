@@ -21,6 +21,8 @@ public class ThugScript : EnemyBase
             return;
         }
 
+        this.currentSlot = SlotManager.Instance.GetAvailabeClosestSlot(this.transform.position);
+
         base.Trigger();
         this.GetComponent<SpriteRenderer>().sprite = triggeredSprite;
     }
