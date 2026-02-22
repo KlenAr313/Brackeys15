@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 5e930939bbf5f8b4fb31f81c37f17435
   - enabled: 1
-    path: Assets/Scenes/Pub.unity
+    path: Assets/Scenes/Levels/Pub.unity
     guid: 19bd2de9e9b0dad4488e48d542b35665
   - enabled: 1
     path: Assets/Scenes/Sewer.unity
@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Storage.unity
     guid: 72f827843dd65204dada60d883aa6006
   - enabled: 1
-    path: Assets/Scenes/PubEnding.unity
+    path: Assets/Scenes/Levels/PubEnding.unity
     guid: 15255d8f25d939041a4e790f8d8a4860
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c386e351ca487fd4992a18cc5494be6e, type: 2}

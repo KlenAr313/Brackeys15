@@ -22335,15 +22335,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3616609234826791449, guid: 3a367c0f9a5645c4b9cb6533de351fc2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.33
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 3616609234826791449, guid: 3a367c0f9a5645c4b9cb6533de351fc2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.59
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3616609234826791449, guid: 3a367c0f9a5645c4b9cb6533de351fc2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.109
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3616609234826791449, guid: 3a367c0f9a5645c4b9cb6533de351fc2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -43637,6 +43637,22 @@ PrefabInstance:
     - target: {fileID: 3773247448988033611, guid: 725fa8a97453ebc44b25af5410741d42, type: 3}
       propertyPath: m_Name
       value: Friend
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824835603657039836, guid: 725fa8a97453ebc44b25af5410741d42, type: 3}
+      propertyPath: 'sentences.Array.data[0]'
+      value: What happened?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824835603657039836, guid: 725fa8a97453ebc44b25af5410741d42, type: 3}
+      propertyPath: 'sentences.Array.data[1]'
+      value: Where have you been?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824835603657039836, guid: 725fa8a97453ebc44b25af5410741d42, type: 3}
+      propertyPath: 'sentences.Array.data[2]'
+      value: John went to the bathroom...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824835603657039836, guid: 725fa8a97453ebc44b25af5410741d42, type: 3}
+      propertyPath: 'sentences.Array.data[3]'
+      value: ...searching for you
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
