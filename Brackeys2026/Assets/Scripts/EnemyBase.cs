@@ -40,6 +40,10 @@ public class EnemyBase : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (!triggered)
+        {
+            return;
+        }
         health -= amount;
 
         while (true && activeBloodCount < bloodEffects.Count)
