@@ -41,7 +41,6 @@ public class CombatSoundScript : MonoBehaviour
     public void PlayDeath(GameObject enemyObject)
     {
         PlayRandom(deathSounds, enemyObject);
-        Debug.Log(enemyObject);
     }
 
     public void PlayRandom(AudioClip[] clips, GameObject enemyObject = null)
