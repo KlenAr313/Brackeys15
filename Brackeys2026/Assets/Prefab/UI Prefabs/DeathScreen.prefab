@@ -68,4 +68,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c28af1d32981cf41ad6979ced2fb80e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathScript
-  deathDocument: {fileID: 7166195194938253972}
+  document: {fileID: 7166195194938253972}

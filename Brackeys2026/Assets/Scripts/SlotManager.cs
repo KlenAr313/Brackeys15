@@ -53,11 +53,9 @@ public class SlotManager : MonoBehaviour
             //Debug.Log(1);
             if (slot.Value) // If the slot is available
             {
-                Debug.Log(2);
                 float distance = Vector3.Distance(npcPosition, slot.Key.transform.position);
                 if (distance < closestDistance)
                 {
-                    Debug.Log(3);
                     closestDistance = distance;
                     closestSlot = slot.Key;
                 }
@@ -67,7 +65,6 @@ public class SlotManager : MonoBehaviour
         if (closestSlot != null)
             slotStatus[closestSlot] = false;
 
-        Debug.Log("Closest Slot: " + closestSlot);
         return closestSlot;
     }
 
