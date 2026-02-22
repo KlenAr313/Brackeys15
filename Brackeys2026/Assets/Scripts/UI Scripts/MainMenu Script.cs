@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
-using System.Diagnostics;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
-    [SerializeField] private string nextScene = "Main";
     private VisualElement mainRoot;
     private VisualElement optionsRoot;
     private Button startButton;
@@ -72,7 +70,9 @@ public class MainMenu : MonoBehaviour
 
     void OnStartClick(ClickEvent evt)
     {
-        SceneManager.LoadScene(nextScene);
+        UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void OnOptionsClick(ClickEvent evt)

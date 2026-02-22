@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextSceneScript : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class NextSceneScript : MonoBehaviour
     public void ChangeScene()
     {
         PlayerControllerScript.Instance.transform.position = spawnPosition;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void OnDrawGizmos()

@@ -97,6 +97,9 @@ public class PauseScript : MonoBehaviour
 
             HealthScript.HideHealth();
 
+            UnityEngine.Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+
             Time.timeScale = 0f;
             inputHandler.Sensitivity = 0f;
             PlayerControllerScript.Instance.canPunch = false;
@@ -108,7 +111,8 @@ public class PauseScript : MonoBehaviour
 
             HealthScript.ShowHealth();
 
-            
+            UnityEngine.Cursor.visible = false;
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
             Time.timeScale = 1f;
             AudioManager.Instance.SetSens(AudioManager.Instance.GetSens());

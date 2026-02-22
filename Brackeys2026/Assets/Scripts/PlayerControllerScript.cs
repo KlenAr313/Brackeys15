@@ -108,7 +108,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (collision.gameObject.tag.ToLower() == "nextscenetrigger")
 		{
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            collision.GetComponent<NextSceneScript>().ChangeScene();
 		}
 	}
 
