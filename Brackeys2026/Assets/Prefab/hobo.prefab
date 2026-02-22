@@ -206,7 +206,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.2
-  m_BaseOffset: 0.6
+  m_BaseOffset: 0.3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2212252599933991038
@@ -230,6 +230,7 @@ MonoBehaviour:
   detectionRange: 10
   triggered: 0
   stayTriggered: 1
+  canInteract: 1
   currentSlot: {fileID: 0}
 --- !u!114 &2414840960621517058
 MonoBehaviour:
