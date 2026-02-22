@@ -6550,35 +6550,35 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1240777853}
     m_Modifications:
     - target: {fileID: 2009566106175400699, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.377855
+      value: 28.477
       objectReference: {fileID: 0}
     - target: {fileID: 2009566106175400699, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.113
+      value: -8.799
       objectReference: {fileID: 0}
     - target: {fileID: 2009566106175400699, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.6628814
+      value: -4.92
       objectReference: {fileID: 0}
     - target: {fileID: 2009566106175400699, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8754261
       objectReference: {fileID: 0}
     - target: {fileID: 2009566106175400699, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.40821788
       objectReference: {fileID: 0}
     - target: {fileID: 2009566106175400699, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.23456968
       objectReference: {fileID: 0}
     - target: {fileID: 2009566106175400699, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.10938163
       objectReference: {fileID: 0}
     - target: {fileID: 2009566106175400699, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6596,6 +6596,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thug2
       objectReference: {fileID: 0}
+    - target: {fileID: 4322013450740637748, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
+      propertyPath: hoboKingScript
+      value: 
+      objectReference: {fileID: 349014536}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8986,12 +8990,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4824835603657039836, guid: a6be232fd20f3384183650c5bef9ae36, type: 3}
+      propertyPath: frequency
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824835603657039836, guid: a6be232fd20f3384183650c5bef9ae36, type: 3}
       propertyPath: characterName
       value: 'Homeless King '
       objectReference: {fileID: 0}
     - target: {fileID: 4824835603657039836, guid: a6be232fd20f3384183650c5bef9ae36, type: 3}
       propertyPath: sentences.Array.size
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4824835603657039836, guid: a6be232fd20f3384183650c5bef9ae36, type: 3}
       propertyPath: 'sentences.Array.data[0]'
@@ -9021,6 +9029,18 @@ PrefabInstance:
       propertyPath: 'sentences.Array.data[6]'
       value: ....give them good beating!
       objectReference: {fileID: 0}
+    - target: {fileID: 4824835603657039836, guid: a6be232fd20f3384183650c5bef9ae36, type: 3}
+      propertyPath: 'sentences.Array.data[7]'
+      value: In return...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824835603657039836, guid: a6be232fd20f3384183650c5bef9ae36, type: 3}
+      propertyPath: 'sentences.Array.data[8]'
+      value: I will open the door...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824835603657039836, guid: a6be232fd20f3384183650c5bef9ae36, type: 3}
+      propertyPath: 'sentences.Array.data[9]'
+      value: ...where your friend went
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9047,7 +9067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   thug1: {fileID: 1313309581}
-  thug2: {fileID: 0}
+  thug2: {fileID: 1581672220}
 --- !u!1 &350305556
 GameObject:
   m_ObjectHideFlags: 0
@@ -30584,6 +30604,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thug1
       objectReference: {fileID: 0}
+    - target: {fileID: 4322013450740637748, guid: ecfea581fd1b7944c84b2f5722b447ee, type: 3}
+      propertyPath: hoboKingScript
+      value: 
+      objectReference: {fileID: 349014536}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37680,6 +37704,7 @@ Transform:
   - {fileID: 1051901419}
   - {fileID: 682147798}
   - {fileID: 278463331}
+  - {fileID: 1581672228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1240837252 stripped
@@ -48406,6 +48431,22 @@ MeshFilter:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7290393320372658586, guid: 52186b5d86c86414b87f3fb995693a0a, type: 3}
   m_PrefabInstance: {fileID: 99056791}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1581672220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4322013450740637748, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
+  m_PrefabInstance: {fileID: 272474444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdfe7afd8ca1d3428701e42bc5c7c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThugScript
+--- !u!4 &1581672228 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2009566106175400699, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
+  m_PrefabInstance: {fileID: 272474444}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1585077065
 GameObject:
@@ -66781,4 +66822,3 @@ SceneRoots:
   - {fileID: 349014534}
   - {fileID: 1092852277}
   - {fileID: 1181333164}
-  - {fileID: 272474444}
