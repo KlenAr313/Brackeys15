@@ -43785,6 +43785,10 @@ PrefabInstance:
       value: Friend
       objectReference: {fileID: 0}
     - target: {fileID: 4824835603657039836, guid: 725fa8a97453ebc44b25af5410741d42, type: 3}
+      propertyPath: characterName
+      value: Jack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824835603657039836, guid: 725fa8a97453ebc44b25af5410741d42, type: 3}
       propertyPath: 'sentences.Array.data[0]'
       value: What happened?
       objectReference: {fileID: 0}
@@ -43794,7 +43798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4824835603657039836, guid: 725fa8a97453ebc44b25af5410741d42, type: 3}
       propertyPath: 'sentences.Array.data[2]'
-      value: John went to the bathroom...
+      value: Jane went to the bathroom...
       objectReference: {fileID: 0}
     - target: {fileID: 4824835603657039836, guid: 725fa8a97453ebc44b25af5410741d42, type: 3}
       propertyPath: 'sentences.Array.data[3]'

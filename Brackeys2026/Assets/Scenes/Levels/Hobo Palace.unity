@@ -6654,6 +6654,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1240777853}
     m_Modifications:
+    - target: {fileID: -9115133765131439589, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
+      propertyPath: characterName
+      value: Thug
+      objectReference: {fileID: 0}
     - target: {fileID: -334899070142269749, guid: a7ac0c36a7a5c3346bb1759b33700d81, type: 3}
       propertyPath: m_Radius
       value: 0.1
@@ -31195,6 +31199,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1240777853}
     m_Modifications:
+    - target: {fileID: -9115133765131439589, guid: ecfea581fd1b7944c84b2f5722b447ee, type: 3}
+      propertyPath: characterName
+      value: Thug
+      objectReference: {fileID: 0}
     - target: {fileID: -334899070142269749, guid: ecfea581fd1b7944c84b2f5722b447ee, type: 3}
       propertyPath: m_Radius
       value: 0.1
