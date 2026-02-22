@@ -71,7 +71,7 @@ public class PlayerControllerScript : MonoBehaviour
     move *= MovementSpeed * Time.deltaTime;
 
     if (inWater)
-        move *= 0.3f;
+        move *= 0.6f;
 
     // Ground reset
     if (controller.isGrounded && verticalVelocity < 0)
