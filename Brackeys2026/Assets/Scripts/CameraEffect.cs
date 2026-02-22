@@ -56,6 +56,12 @@ public class CameraEffect : MonoBehaviour
     IEnumerator NauseaRoutine() {
         float elapsed = 0f;
 
+        float hueShift = colorAdjustments.hueShift.value;
+        float intensity = lensDistortion.intensity.value;
+        float scale = lensDistortion.scale.value;
+
+        GameObject player = GameObject.Find("Main Camera");
+
         while(elapsed < duration)
         {
             elapsed += Time.deltaTime;
@@ -68,15 +74,15 @@ public class CameraEffect : MonoBehaviour
             lensDistortion.scale.value = 1.0f + (wave * scalePulse);
 
             float tiltZ = Mathf.Sin(Time.time * swaySpeed) * swayAmount;
-            transform.localRotation = Quaternion.Euler(0, 0, tiltZ);
+            player.transform.localRotation = Quaternion.Euler(0, 0, tiltZ);
             yield return null;
         }
 
         // Reset values after effect ends
-        colorAdjustments.hueShift.value = 0;
-        lensDistortion.intensity.value = 0;
-        lensDistortion.scale.value = 1.0f;
-        transform.localRotation = Quaternion.identity;
+        colorAdjustments.hueShift.value = hueShift;
+        lensDistortion.intensity.value = intensity;
+        lensDistortion.scale.value = scale;
+        player.transform.localRotation = Quaternion.identity;
     }
 
     private void TrigerRat()
