@@ -2,11 +2,11 @@
     <Style src="project://database/Assets/UI%20Toolkit/Styles/health_stlye.uss?fileID=7433441132597879392&amp;guid=4ae96c6bd3cb7464096acbcf69afd29d&amp;type=3#health_stlye"/>
     <Style src="project://database/Assets/UI%20Toolkit/Styles/Death_Screen_Style.uss?fileID=7433441132597879392&amp;guid=3ec5237faa153b444b30b61d34732b04&amp;type=3#Death_Screen_Style"/>
     <ui:VisualElement name="MainRoot" style="flex-grow: 1; left: 50px; top: 50px;">
-        <ui:VisualElement name="FullHealthRoot" class="health-bar" style="overflow: hidden; top: auto; left: auto; opacity: 1; height: 257px;">
+        <ui:VisualElement name="FullHealthRoot" class="health-bar" style="overflow: hidden; top: auto; left: auto; height: 257px;">
             <ui:VisualElement name="FullHealth" class="health-bg health-icon" style="overflow: hidden; bottom: auto; left: auto; top: auto; background-image: url(&quot;project://database/Assets/Images/s%C3%B6r_folyad%C3%A9k.png?fileID=2800000&amp;guid=2896e2cc67aa1ac4bbfe071d0fe49c9f&amp;type=3#sör_folyadék&quot;);"/>
         </ui:VisualElement>
-        <ui:VisualElement name="MissingHealthRoot" class="health-bar" style="top: auto; left: auto; height: 256px; opacity: 1;">
-            <ui:VisualElement name="MissingHealth" class="health-fill health-icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/s%C3%B6r_%C3%BCveg.png?fileID=2800000&amp;guid=fcbf7cd16cb6e694bb2e85cd59071352&amp;type=3#sör_üveg&quot;); overflow: hidden; opacity: 1; left: auto; top: auto;"/>
+        <ui:VisualElement name="MissingHealthRoot" class="health-bar" style="top: auto; left: auto; height: 256px;">
+            <ui:VisualElement name="MissingHealth" class="health-fill health-icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/s%C3%B6r_%C3%BCveg.png?fileID=2800000&amp;guid=fcbf7cd16cb6e694bb2e85cd59071352&amp;type=3#sör_üveg&quot;); overflow: hidden; left: auto; top: auto;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

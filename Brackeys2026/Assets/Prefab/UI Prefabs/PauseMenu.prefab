@@ -69,4 +69,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseScript
   pauseDocument: {fileID: 4814276115693431198}
-  interactionKey: 27
+  interactionKey: 112

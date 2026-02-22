@@ -4,7 +4,8 @@ using UnityEngine.UIElements;
 
 public class DeathScript : MonoBehaviour
 {
-    [SerializeField] private UIDocument deathDocument;
+    [SerializeField] private UIDocument document;
+    private static UIDocument deathDocument;
     static InputHandler inputHandler;
     static PlayerControllerScript playerControllerScript;
     static VisualElement deathRoot;
@@ -13,6 +14,7 @@ public class DeathScript : MonoBehaviour
 
     void OnEnable()
     {
+        deathDocument = document;
         deathRoot = deathDocument.rootVisualElement.Q<VisualElement>("DeathRoot");
         deathRoot.AddToClassList("hidden");
         deathRoot.style.display = DisplayStyle.None;
@@ -30,6 +32,10 @@ public class DeathScript : MonoBehaviour
         deathRoot.style.display = DisplayStyle.Flex;
 
         HealthScript.HideHealth();
+
+        UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        deathDocument.rootVisualElement.pickingMode = PickingMode.Position;
 
         Time.timeScale = 0f;
         inputHandler.Sensitivity = 0f;
