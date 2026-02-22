@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: -9115133765131439589}
   - component: {fileID: -3514196853419047931}
   m_Layer: 11
-  m_Name: Thug1
+  m_Name: Thug2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomAnimator
   animationName: punch
   animations:
-  - {fileID: 21300000, guid: ee1c80b86e8f86d4ca8ac15ed13de0ed, type: 3}
+  - {fileID: 21300000, guid: 838b762bbaa4a0543aad578f0037ca81, type: 3}
   fps: 5
   isLooping: 0
 --- !u!212 &9106377554101559502
@@ -277,7 +277,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: a072a839554ef5445834eb74248e9652, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02938d7f1fcd58b4d92782e30d1c1c5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   triggered: 0
   stayTriggered: 1
   currentSlot: {fileID: 0}
-  triggeredSprite: {fileID: 21300000, guid: 527d716bab0f1944fa2cce8fb289dc67, type: 3}
+  triggeredSprite: {fileID: 21300000, guid: 329a941b167491546abba9ba16425573, type: 3}
 --- !u!114 &-9115133765131439589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCInteractScript
   document: {fileID: -3514196853419047931}
   dialogueSpeed: 0.2
-  characterName: Thug 1
+  characterName: Thug 2
   sentences:
   - Sentence1
   - Sentence2

@@ -107,6 +107,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bigRatSprite: {fileID: 0}
   smallRatSprite: {fileID: 0}
+  finalRatSprite: {fileID: 0}
   growUpTime: 1.5
 --- !u!1 &3773247448988033611
 GameObject:
@@ -166,7 +167,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.5, y: 1.2, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.1, y: 0, z: 0}
 --- !u!114 &6483679361741543570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +183,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bigRatSprite: {fileID: 0}
   smallRatSprite: {fileID: 0}
+  finalRatSprite: {fileID: 0}
   growUpTime: 1.5
 --- !u!114 &2414840960621517058
 MonoBehaviour:
@@ -249,12 +251,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 2dc5ed11d13ed9242ba6943391077ff5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 329a941b167491546abba9ba16425573, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.41, y: 1.28}
+  m_Size: {x: 0.68, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
