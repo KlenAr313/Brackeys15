@@ -46,7 +46,6 @@ public class CameraEffect : MonoBehaviour
 		{
 			TriggerNausea();
             TrigerRat();
-            DestroyNausea();
 		}
 	}
 

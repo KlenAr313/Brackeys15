@@ -118,12 +118,7 @@ public class PlayerControllerScript : MonoBehaviour
             Destroy(collision.gameObject);
 		}
 
-		if (collision.gameObject.tag.ToLower() == "water")
-		{
-			inWater = true;
-			waterDebuffTimer = 400;
-    }
-    if (collision.gameObject.tag.ToLower() == "nextscenetrigger")
+        if (collision.gameObject.tag.ToLower() == "nextscenetrigger")
 		{
             collision.GetComponent<NextSceneScript>().ChangeScene();
 		}
@@ -132,6 +127,11 @@ public class PlayerControllerScript : MonoBehaviour
 		{
 			inWater = true;
 			waterDebuffTimer = 200;
+		}
+
+        if (collision.gameObject.tag.ToLower() == "deathtrigger")
+		{
+			Respawn();
 		}
 	}
 
