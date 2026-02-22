@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using System.Collections;
+using System.Runtime.CompilerServices;
 
 public class CameraEffect : MonoBehaviour
 {
@@ -45,12 +46,26 @@ public class CameraEffect : MonoBehaviour
 		{
 			TriggerNausea();
             TrigerRat();
+            DestroyNausea();
 		}
 	}
 
     public void TriggerNausea()
     {
         StartCoroutine(NauseaRoutine());
+    }
+
+    private void DestroyNausea()
+    {
+        int counter = 0;
+        GameObject effect = GameObject.Find("NauseTrigger");
+        while (effect != null)
+        {
+            GameObject.Destroy(effect);
+            counter++;
+            effect = GameObject.Find("NauseTrigger (" + counter.ToString() + ")");
+
+        }
     }
 
     IEnumerator NauseaRoutine() {

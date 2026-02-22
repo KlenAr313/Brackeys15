@@ -70,7 +70,7 @@ public class PlayerControllerScript : MonoBehaviour
     move *= MovementSpeed * Time.deltaTime;
 
     if (inWater)
-        move *= 0.2f;
+        move *= 0.3f;
 
     // Ground reset
     if (controller.isGrounded && verticalVelocity < 0)
@@ -126,7 +126,7 @@ public class PlayerControllerScript : MonoBehaviour
 		if (collision.gameObject.tag.ToLower() == "water")
 		{
 			inWater = true;
-			waterDebuffTimer = 400;
+			waterDebuffTimer = 200;
 		}
 	}
 
