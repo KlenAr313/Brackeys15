@@ -10,7 +10,7 @@ public abstract class EntityControllerScript : MonoBehaviour
 	protected bool jump;
 	protected bool punch;
 
-	public float MovementSpeed => movementSpeed;
+	public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
 	public float JumpForce => jumpForce;
 	public Vector2 Direction => direction;
 	public bool Jump => jump;
@@ -23,12 +23,5 @@ public abstract class EntityControllerScript : MonoBehaviour
 		float cos = Mathf.Cos(radians);
 
 		return new Vector2(cos * vector.x - sin * vector.y, sin * vector.x + cos * vector.y);
-	}
-
-	protected void Start()
-	{
-		rigidbody = GetComponent<Rigidbody>();
-		rigidbody.freezeRotation = true;
-		rigidbody.useGravity = true;
 	}
 }

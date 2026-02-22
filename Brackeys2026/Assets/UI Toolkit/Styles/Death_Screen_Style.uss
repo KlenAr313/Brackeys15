@@ -1,0 +1,42 @@
+:root {
+}
+
+#PauseRoot {
+    transition-property: translate;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
+}
+
+.hidden {
+    translate: 0 0;
+    opacity: 0;
+    display: flex;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+}
+
+.visible {
+    translate: 0 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+}
+
+Button {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-color: rgb(188, 188, 188);
+    border-right-color: rgb(188, 188, 188);
+    border-top-color: rgb(188, 188, 188);
+    border-bottom-color: rgb(188, 188, 188);
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/UI%20Toolkit/button_style.png?fileID=2800000&guid=8ec9704096d212245a95447862c3f4ef&type=3#button_style");
+    width: 250px;
+    height: 70px;
+}

@@ -1,0 +1,198 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
+
+public class EnemyBase : MonoBehaviour
+{
+    [SerializeField] protected int health = 100;
+    [SerializeField] private int damage = 5;
+    [SerializeField] private float damageInterval = 3;
+    [SerializeField] private float attackRange = 1f;
+
+    [SerializeField] private Transform player;
+    [SerializeField] private UnityEngine.AI.NavMeshAgent agent;
+    [SerializeField] private float detectionRange = 10f;
+    [SerializeField] private bool triggered = true;
+    [SerializeField] private bool stayTriggered = true;
+
+    public bool canInteract = true;
+
+    private List<GameObject> bloodEffects = new List<GameObject>();
+    private int activeBloodCount = 0;
+
+    private SlotManager slotManager;
+
+    public GameObject currentSlot;
+    private CustomAnimator animator;
+
+    private bool inCombat = false;
+
+    private float damageTimer = 0;
+    private Vector3 originalPosition;
+
+    public bool InCombat { get => inCombat; set => inCombat = value; }
+    public virtual void Trigger() { triggered = true; }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1f, 0f, 0f, 0.3f);
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (!triggered)
+        {
+            return;
+        }
+
+        if (!canInteract)
+        {
+            return;
+        }
+
+        health -= amount;
+
+        while (true && activeBloodCount < bloodEffects.Count)
+        {
+            int rndNumber = Random.Range(0, 3);
+            if(bloodEffects[rndNumber].activeSelf == false)
+            {
+                bloodEffects[rndNumber].SetActive(true);
+                activeBloodCount++;
+                break;
+            }
+        }
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    protected virtual void Die()
+    {
+        if(this.currentSlot != null)
+        {
+            slotManager.ResetSlot(this.currentSlot);
+            slotManager.Enemies.Remove(this);
+        }
+
+        CombatSoundScript.Instance.PlayDeath(gameObject);
+        
+        Destroy(gameObject);
+    }
+
+    protected void Start()
+    {
+        slotManager = FindFirstObjectByType<SlotManager>();
+        player = GameObject.Find("Player").transform;
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        animator = GetComponentInChildren<CustomAnimator>();
+        damageInterval = Random.Range(2f, 4f);
+        slotManager.Enemies.Add(this);
+        originalPosition = this.gameObject.transform.position;
+
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("Blood"))
+            {
+                bloodEffects.Add(child.gameObject);
+                child.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void Update()
+    {
+        Movement();
+        if(damageTimer >= damageInterval)
+        {
+            damageTimer = 0;
+            damageInterval = Random.Range(2f, 4f);
+            if (InCombat && inMelleeRange())
+            {
+                Attack();
+            }
+        }
+
+        damageTimer += Time.deltaTime;
+    }
+
+    void Movement()
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer < detectionRange && currentSlot == null && triggered && seesPlayer())
+        {
+            Debug.Log("2");
+            currentSlot = slotManager.GetAvailabeClosestSlot(transform.position);
+            if (currentSlot != null)
+            {
+                agent.SetDestination(currentSlot.transform.position);
+                inCombat = true;
+            }
+        }
+        else if (distanceToPlayer >= detectionRange && triggered && currentSlot != null)
+        {
+            Debug.Log("3");
+            agent.SetDestination(transform.position);
+            slotManager.ResetSlot(currentSlot);
+            currentSlot = null;
+            if(!stayTriggered)
+                triggered = false;
+            inCombat = false;
+        }
+
+        if (triggered && currentSlot != null)
+        {
+            Debug.Log("4");
+            agent.SetDestination(currentSlot.transform.position);
+            inCombat = true;
+        }
+    }
+
+    bool seesPlayer()
+    {
+        Vector3 directionToPlayer = player.position - transform.position;
+        Ray ray = new Ray(transform.position, directionToPlayer);
+
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit, detectionRange, LayerMask.GetMask("Default"), QueryTriggerInteraction.Ignore))
+            return false;
+
+        return true;
+    }
+
+    bool inMelleeRange()
+    {
+        Vector3 directionToPlayer = player.position - transform.position;
+        if (Physics.Raycast(gameObject.transform.position, directionToPlayer, out RaycastHit hit, attackRange))
+        {
+			return true;
+        }
+        return false;
+    }
+
+    public void Reset()
+    {
+        triggered = true;
+        inCombat = false;
+        damageTimer = 0;
+        this.gameObject.transform.position = originalPosition;
+    }
+
+    private void Attack()
+    {
+        animator.PlayAnimation();
+        PlayerControllerScript.Instance.TakeDamage(damage);
+
+        foreach (GameObject blood in bloodEffects)
+        {
+            if (blood.activeSelf == true)
+            {
+                blood.GetComponent<CustomAnimator>().PlayAnimation();
+            }
+        }
+    }
+}

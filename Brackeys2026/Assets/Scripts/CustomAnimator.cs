@@ -43,7 +43,6 @@ public class CustomAnimator : MonoBehaviour
         {
             NextFrame();
         }
-
     }
 
     public void PlayAnimation()

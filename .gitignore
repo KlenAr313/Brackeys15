@@ -8,7 +8,6 @@
 **/[Uu]sersettings/
 **/[Aa]ssets/TextMesh Pro/
 **/TextMesh Pro.meta/
-**/[Pp]rojectSettings/
 **/UIElementsSchema/
 
 # --- Asset Store Packages ---
@@ -41,6 +40,8 @@
 *.pdb
 *.opendb
 *.VC.db
+*.zip
+*.rar
 
 # --- Build Artifacts ---
 **/[Bb]in/

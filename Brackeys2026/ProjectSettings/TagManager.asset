@@ -8,6 +8,14 @@ TagManager:
   - Enemy
   - Wall
   - EnemySlot
+  - Water
+  - MainUI
+  - SpawnPoint
+  - NauseaTrigger
+  - HealthPickup
+  - NextSceneTrigger
+  - DeathTrigger
+  - Blood
   layers:
   - Default
   - TransparentFX

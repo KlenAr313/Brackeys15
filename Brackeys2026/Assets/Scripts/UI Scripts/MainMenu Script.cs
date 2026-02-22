@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
-using System.Diagnostics;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,8 +11,12 @@ public class MainMenu : MonoBehaviour
     private Button optionsButton;
     private Button exitButton;
     private Button backButton;
+    private Slider musicSlider;
+    private Slider sfxSlider;
+    private Slider sensSlider;
+
     private bool options = false;
-    void Awake()
+    void Start()
     {
         if (document != null)
         {
@@ -30,6 +33,18 @@ public class MainMenu : MonoBehaviour
             backButton.RegisterCallback<ClickEvent>(OnOptionsClick);
             exitButton = document.rootVisualElement.Q<Button>("ExitButton");
             exitButton.RegisterCallback<ClickEvent>(OnExitClick);
+
+            musicSlider = document.rootVisualElement.Q<Slider>("MusicSlider");
+            musicSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetMusic(evt.newValue); });
+            musicSlider.value = AudioManager.Instance.GetMusic();
+        
+            sfxSlider = document.rootVisualElement.Q<Slider>("SFXSlider");
+            sfxSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSFX(evt.newValue); });
+            sfxSlider.value = AudioManager.Instance.GetSFX();
+
+            sensSlider = document.rootVisualElement.Q<Slider>("SensitivitySlider");
+            sensSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSens(evt.newValue); });
+            sensSlider.value   = AudioManager.Instance.GetSens();
         }
     }
 
@@ -55,7 +70,9 @@ public class MainMenu : MonoBehaviour
 
     void OnStartClick(ClickEvent evt)
     {
-        SceneManager.LoadScene("Mező");
+        UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void OnOptionsClick(ClickEvent evt)

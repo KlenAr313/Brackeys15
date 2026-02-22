@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 3a367c0f9a5645c4b9cb6533de351fc2
+=======
+<<<<<<<< HEAD:Brackeys2026/Assets/Prefab/HPickup.prefab.meta
+guid: 0c5089ee3c01b8c47898f4d6826caec8
+========
+guid: 6e51a38e8dc565a41a1b759b7952688f
+>>>>>>>> b8794e241eb71c5c1c6ce4e1d3bae8ed74c12157:Brackeys2026/Assets/Prefab/Player.prefab.meta
+>>>>>>> b8794e241eb71c5c1c6ce4e1d3bae8ed74c12157
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

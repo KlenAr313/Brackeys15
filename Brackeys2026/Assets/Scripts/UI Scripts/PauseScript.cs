@@ -17,10 +17,27 @@ public class PauseScript : MonoBehaviour
     private Button optionsButton;
     private Button backButton;
     private Button exitButton;
-    private bool paused = false;
+    private Slider musicSlider;
+    private Slider sfxSlider;
+    private Slider sensSlider;
+    public static bool paused = false;
     private bool options = false;
+    public static PauseScript Instance;
+    public bool canPause = true;
 
     void Start()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    void OnEnable()
     {
         if (pauseDocument != null)
         {
@@ -40,6 +57,23 @@ public class PauseScript : MonoBehaviour
             backButton.RegisterCallback<ClickEvent>(OnOptionsClick);
             exitButton = pauseDocument.rootVisualElement.Q<Button>("ExitButton");
             exitButton.RegisterCallback<ClickEvent>(OnExitClick);
+
+            if (AudioManager.Instance != null)
+            {
+                musicSlider = pauseDocument.rootVisualElement.Q<Slider>("MusicSlider");
+                musicSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetMusic(evt.newValue); });
+                musicSlider.value = AudioManager.Instance.GetMusic();
+
+                sfxSlider = pauseDocument.rootVisualElement.Q<Slider>("SFXSlider");
+                sfxSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSFX(evt.newValue); });
+                sfxSlider.value   = AudioManager.Instance.GetSFX();
+
+                //This is disgusting, just remember that
+                sensSlider = pauseDocument.rootVisualElement.Q<Slider>("SensitivitySlider");
+                sensSlider.RegisterValueChangedCallback(evt => { AudioManager.Instance.SetSens(evt.newValue); });
+                sensSlider.value   = AudioManager.Instance.GetSens();
+            }
+            canPause = true;
         }
     }
 
@@ -51,7 +85,8 @@ public class PauseScript : MonoBehaviour
             if (System.Enum.TryParse<Key>(interactionKey.ToString(), out parsedKey))
             {
                 KeyControl keyControl = Keyboard.current[parsedKey];
-                if (keyControl != null && keyControl.wasPressedThisFrame)
+                if (keyControl != null && keyControl.wasPressedThisFrame && canPause)
+                {
                     if (!options)
                     {
                         TogglePause();
@@ -60,7 +95,7 @@ public class PauseScript : MonoBehaviour
                     {
                         ToggleOptions();
                     }
-                    
+                }
             }
         }
     }
@@ -68,25 +103,37 @@ public class PauseScript : MonoBehaviour
     void TogglePause()
     {
         paused = !paused;
-        PlayerControllerScript playerControllerScript = GameObject.Find("Player").GetComponent<PlayerControllerScript>();
+        InputHandler inputHandler = GameObject.Find("Player").GetComponent<InputHandler>();
 
         if (paused)
         {
             pauseRoot.RemoveFromClassList("hidden");
             pauseRoot.AddToClassList("visible");
 
+            HealthScript.HideHealth();
+
+            UnityEngine.Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            pauseDocument.rootVisualElement.pickingMode = PickingMode.Position;
+
             Time.timeScale = 0f;
-            playerControllerScript.Sensitivity = 0f;
-            playerControllerScript.Punch = false;
+            inputHandler.Sensitivity = 0f;
+            PlayerControllerScript.Instance.canPunch = false;
         }
         else
         {
             pauseRoot.RemoveFromClassList("visible");
             pauseRoot.AddToClassList("hidden");
 
+            HealthScript.ShowHealth();
+
+            UnityEngine.Cursor.visible = false;
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            pauseDocument.rootVisualElement.pickingMode = PickingMode.Ignore;
+
             Time.timeScale = 1f;
-            playerControllerScript.Sensitivity = playerControllerScript.OriginalSensitivity;
-            playerControllerScript.Punch = false;
+            AudioManager.Instance.SetSens(AudioManager.Instance.GetSens());
+            PlayerControllerScript.Instance.canPunch = true;
         }
     }
 
@@ -109,7 +156,6 @@ public class PauseScript : MonoBehaviour
             mainRoot.AddToClassList("visible");
         }
     }
-
 
     void OnResumeClick(ClickEvent evt)
     {

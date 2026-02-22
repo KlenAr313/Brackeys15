@@ -8,7 +8,7 @@
 }
 
 .hidden {
-    translate: -2000px 0;
+    translate: 0 -1500px;
 }
 
 .visible {
@@ -16,16 +16,12 @@
 }
 
 Button {
-    border-top-width: 10px;
-    border-right-width: 10px;
-    border-bottom-width: 10px;
-    border-left-width: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-left-color: rgb(188, 188, 188);
-    border-right-color: rgb(188, 188, 188);
-    border-top-color: rgb(188, 188, 188);
-    border-bottom-color: rgb(188, 188, 188);
+    background-color: rgba(73, 73, 73, 0);
+    background-image: url("project://database/Assets/UI%20Toolkit/button_style.png?fileID=2800000&guid=8ec9704096d212245a95447862c3f4ef&type=3#button_style");
+    width: 250px;
+    height: 70px;
+}
+
+Slider {
+    background-image: none;
 }

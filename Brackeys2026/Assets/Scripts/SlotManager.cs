@@ -8,9 +8,26 @@ public class SlotManager : MonoBehaviour
     [SerializeField]
     private float spaceToPlayer = 2f;
 
+    private static SlotManager instance;
+
     private Dictionary<GameObject, bool> slotStatus;
+
+    public static SlotManager Instance { get => instance; set => instance = value; }
+
+    public List<EnemyBase> Enemies;
+
     void Start()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            return;
+        }
+
+
         slotStatus = new Dictionary<GameObject, bool>();
         for (int i = 0; i < numberOfSlots; i++)
         {
@@ -27,16 +44,20 @@ public class SlotManager : MonoBehaviour
     
     public GameObject GetAvailabeClosestSlot(Vector3 npcPosition)
     {
+        //Debug.Log("Giving Slot");
         GameObject closestSlot = null;
         float closestDistance = Mathf.Infinity;
 
         foreach (var slot in slotStatus)
         {
+            //Debug.Log(1);
             if (slot.Value) // If the slot is available
             {
+                Debug.Log(2);
                 float distance = Vector3.Distance(npcPosition, slot.Key.transform.position);
                 if (distance < closestDistance)
                 {
+                    Debug.Log(3);
                     closestDistance = distance;
                     closestSlot = slot.Key;
                 }
@@ -45,6 +66,8 @@ public class SlotManager : MonoBehaviour
 
         if (closestSlot != null)
             slotStatus[closestSlot] = false;
+
+        Debug.Log("Closest Slot: " + closestSlot);
         return closestSlot;
     }
 
@@ -53,6 +76,5 @@ public class SlotManager : MonoBehaviour
         if (slotStatus.ContainsKey(slot))
             slotStatus[slot] = true;
     }
-
 
 }

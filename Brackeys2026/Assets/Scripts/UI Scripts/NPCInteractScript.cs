@@ -10,13 +10,16 @@ using UnityEngine.UIElements;
 public class NPCInteractScript : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
-    [SerializeField] private float dialogueSpeed;
+    [SerializeField] private float dialogueSpeed = 0.2f;
+    [SerializeField] private string characterName;
     [SerializeField] private string[] sentences;
+    [SerializeField] private bool triggering = false;
     [SerializeField] private float interactionRange = 2f;
     [SerializeField] private KeyCode interactionKey = KeyCode.E;
     [SerializeField] private float frequency = 0.2f;
     [SerializeField] private float wob = 8f;
     private VisualElement dialogueRoot;
+    private Label nameLabel;
     private bool skipRequested = false;
     private bool playerInRange = false;
     private bool dialogueActive = false;
@@ -25,16 +28,20 @@ public class NPCInteractScript : MonoBehaviour
     private bool doneWriting = true;
     private Coroutine writingCoroutine;
     
+    public bool didInteract = false;
 
     void Start()
     {
-        // MAKE PLAYER BEFORE
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        document = gameObject.GetComponent<UIDocument>();
         
         if (document != null)
         {
             document.enabled = true;
             dialogueRoot = document.rootVisualElement.Q<VisualElement>("DialogueRoot");
+            nameLabel = document.rootVisualElement.Q<Label>("NameLabel");
+            nameLabel.style.display = DisplayStyle.None;
+            nameLabel.text = characterName;
         }
     }
 
@@ -58,13 +65,23 @@ public class NPCInteractScript : MonoBehaviour
             }
         }
 
-        // DEBUG (SANTER) CLAUSE UNTIL NPCS ARE IMPLEMENTED NORMALLY
-        playerInRange = true;
-
         if (playerInRange && pressed)
         {
             if (dialogueActive != true)
             {
+                Transform child = transform.Find("ExcMark");
+                if (child != null)
+                {
+                    Destroy(child.gameObject);
+                }
+                else
+                {
+                    child = transform.Find("QueMark");
+                    if(child != null)
+                    {
+                        Destroy(child.gameObject);
+                    }
+                }
                 ShowDialogue();
             }
             NextSentence();
@@ -78,16 +95,20 @@ public class NPCInteractScript : MonoBehaviour
     void ShowDialogue()
     {
         dialogueActive = true;
-        if (dialogueRoot != null)
+        if (dialogueRoot != null || nameLabel != null)
             dialogueRoot.style.display = DisplayStyle.Flex;
+            nameLabel.style.display = DisplayStyle.Flex;
     }
 
     void HideDialogue()
     {
         dialogueActive = false;
+        didInteract = true;
         
-        if (dialogueRoot != null)
+        if (dialogueRoot != null || nameLabel != null)
             dialogueRoot.style.display = DisplayStyle.None;
+            nameLabel.style.display = DisplayStyle.None;
+
     }
 
     void NextSentence()
@@ -103,6 +124,15 @@ public class NPCInteractScript : MonoBehaviour
             {
                 ind = 0;
                 HideDialogue();
+                if (triggering)
+                {
+                    gameObject.GetComponent<EnemyBase>().Trigger();
+
+                    if(gameObject.TryGetComponent<ThugScript>(out ThugScript thug))
+                    {
+                        thug.GetComponent<ThugScript>().Trigger();
+                    }
+                }
             }
         }
         else
