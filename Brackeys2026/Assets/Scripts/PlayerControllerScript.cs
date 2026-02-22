@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerControllerScript : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerControllerScript : MonoBehaviour
     public float Gravity = 1f;
     public float JumpForce = 10;
 
-    private GameObject spawnPoint;
+    public GameObject spawnPoint;
     [SerializeField] private int damage = 10;
 	[SerializeField] private int health = 100;
     [SerializeField] private int hpGain = 30;
@@ -131,9 +132,15 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (collision.gameObject.tag.ToLower() == "deathtrigger")
 		{
-			Respawn();
+            StartCoroutine(DelayedRespawn());
 		}
 	}
+
+    private IEnumerator DelayedRespawn()
+    {
+        yield return new WaitForSeconds(0.4f);
+        Respawn();
+    }
 
     private void OnCollisionEnter(Collision collision)
 	{
